@@ -1,0 +1,63 @@
+<?php
+    namespace Auth;
+    require_once("autoload.php");
+
+    use DMF\App;
+    use DMF\Events\StatusChangeEvent;
+    use DMF\Ext\Module;
+    use DMF\Page;
+    
+    class main extends Module{
+    
+        public function getName() {
+            return __NAMESPACE__;
+        }
+        
+        public function getMainRoute() {
+            return [];
+        }
+        
+        public function isLibrary(){
+            return true;
+        }
+
+        public function handleEvent($event){
+            if ($event instanceof StatusChangeEvent){
+                if ($event->getStatusCode() == 401) $this->showLogin();
+                return true;
+            }
+        }
+
+        public function showLogin(){
+            $account = new Account();
+            $page = App::getInstance()->getPage();
+            $request = App::getInstance()->getRequestHandler();
+            $input = App::getInstance()->getInputHandler();
+            $page->clear();
+            $loginTemplate = new Page\Template('login');
+            $page->add($loginTemplate);
+            $loginTemplate->add("url", new Page\Text($request->getProtocol(). '://' . $request->getHost()));
+
+            if($input->post("user") != null && $input->post("pass") != null ) {
+
+                if (!$account->login($input->post('user'), $input->post("pass"))) {
+                    if ($account->ip_is_locked()) {
+                        $loginTemplate->add("msg", new Page\Text("Uw IP is tijdelijk geblokeerd omdat er te vaak verkeerde gegevens zijn ingevoerd"));
+                    } else if($account->user_is_locked($input->post('user'))){
+                        $loginTemplate->add("msg", new Page\Text("Uw account is tijdelijk geblokeerd omdat er te vaak een verkeerd wachtwoord is ingevoerd"));
+                    } else if($account->isVerified($input->post("user")) === false){
+                        $loginTemplate->add("msg", new Page\Text("U moet uw account nog activeren"));
+                    }else{
+                        $loginTemplate->add("msg", new Page\Text("Uw gebruikersnaam en/of wachtwoord is niet correct"));
+                    }
+                    $loginTemplate->add("email", new Page\Text($input->post('user')));
+                } else {
+                    $request->refresh();
+
+                }
+            }
+            $page->execute();
+        }
+        
+    }
+?>

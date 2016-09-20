@@ -1,0 +1,153 @@
+head, body, nav{
+    padding:0;  margin:0;
+    font-family: "Arial";
+}
+
+div.menu {
+    background-image: url("logo.png");
+    background-size: 220px 100px;
+    background-repeat: no-repeat;
+    margin-left:50px;
+    margin-right:50px;
+    text-align:right;
+    padding-top:40px;
+    padding-left:220px;
+    min-height: 50px;
+
+    border-bottom: 2px solid #AAA;
+}
+
+div.menu > a {
+    color:#999;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+div.menu > a:hover {
+    color:#000;
+}
+
+
+main{
+    margin-left:50px;
+    margin-right:50px;
+    padding:20px;
+    border-bottom: 1px solid #AAA;
+}
+
+hr.clear {
+    border:none;
+}
+
+.group{
+    display:inline-block;
+    vertical-align:top;
+    border: 1px solid #AAA;
+    padding:20px;
+    margin:5px;
+    margin-top:10px;
+    max-width:340px;
+    min-height:180px;
+    border-radius: 3px;
+}
+
+.group > h1 {
+    float:left;
+    margin: -35px 0 0 10px;
+    font-size: 16px;
+    font-weight:normal;
+    color:#AAA;
+    background: #fff;
+    padding:5px;
+}
+
+.group.half-size{
+    max-width: 100%;
+    width: calc(45% - 40px);
+    min-width: 300px;
+}
+
+input {
+    height:25px;
+    width:150px;
+    padding:5px;
+}
+
+input.long{
+    width:230px;
+}
+
+button, .button {
+    background-color:#000;
+    border: 1px solid #000;
+    color: #fff;
+    width:150px;
+    height:30px;
+    cursor:pointer;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.button{
+    display:inline-block;
+    width:148px;
+    height:28px;
+    padding:0;
+    text-align:center;
+    line-height:30px;
+    font-size:13px;
+    text-decoration: none;
+}
+
+button:hover, .button:hover {
+    background-color:#fff;
+    color:#000;
+}
+
+input.short {
+    width:40px;
+    padding:0;
+}
+
+table.spacing {
+    border:none;
+}
+
+td {
+    padding-bottom: 10px;
+    padding-left:10px;
+}
+
+input.top {
+    border: solid 1px #AAA;
+    border-bottom:none;
+}
+
+th {
+    vertical-align: top;
+    text-align:right;
+    font-size:15px;
+    font-weight: normal;
+}
+
+.errors{
+    color:#C00;
+    font-weight: bold;
+}
+
+@media (max-width: 450px) {
+    main, div.menu{
+        margin-left:0;
+        margin-right:0;
+    }
+
+    main {
+        padding:5px;
+    }
+
+
+}

@@ -1,0 +1,11 @@
+<div>
+    <h1>Open aanvragen</h1>
+    <table class="spacing">
+    <tr>
+        <th><b>Nummer</b></th>
+        <th><b>Titel</b></th>
+        <th><b>Datum</b></th>
+        <th><b>Medewerker</b></th>
+        <th><b>Inzien</b></th>
+    </tr>
+

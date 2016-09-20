@@ -1,0 +1,22 @@
+<!DOCTYPE>
+<html>
+	<head>
+	    <title>{{title}}</title>
+		<link rel="icon" href="{{data_url}}favicon.ico"/>
+		<link rel="stylesheet" href="{{data_url}}style.css"/>
+		<link rel="stylesheet" href="{{data_url}}nav.css"/>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+		<nav>
+			{{extra}}
+			<a class="profile" href="/main/profile">{{name}}</a>
+		</nav>
+		<div class="Menu">
+			{{Menu}}
+		</div>
+		<main>
+			{{content}}
+		</main>
+	</body>
+</html>

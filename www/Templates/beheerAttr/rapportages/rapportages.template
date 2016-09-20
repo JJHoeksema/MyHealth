@@ -1,0 +1,36 @@
+<h2>Management rapportages</h2>
+
+<p class="errors">
+    {{errors}}
+</p>
+
+<p>Op deze pagina zijn de management rapportages zien.</p>
+<br/>
+
+<table>
+<tr>
+<td>Totaal ge&iuml;nd bedrag over de huidige maand:</td><td>&euro;{{maandbedrag}}</td>
+</tr>
+<tr>
+<td>Totaal ge&iuml;nd bedrag over de huidige maand van abonnees:</td><td>&euro;{{abobedrag}}</td>
+</tr>
+<tr>
+<td>Totaal ge&iuml;nd bedrag over de huidige maand van ad-hoc gebruikers:</td><td>&euro;{{adbedrag}}</td>
+</tr>
+</table>
+
+</br>
+
+<table>
+<tr>
+<td>Totaal gebruik in tijd van alle bezoekerspassen over huidige maand:</td><td>{{bezoekuur}} uur</td>
+</tr>
+</table>
+
+</br>
+
+<table>
+<tr>
+<td>Gemiddelde percentage bezetting van perkeergarage over huidige maand:</td><td>{{gemiddelde}} %</td>
+</tr>
+</table>

@@ -1,0 +1,14 @@
+<h2>Pasbeheer</h2>
+
+<p class="errors">
+    {{errors}}
+</p>
+
+<p>Voer abonnements-id in: </p>
+
+<form method="get" action = "/beheer/pass/index/">
+
+    <input required         name="aboid"         type="number"    class="long" />
+    <input type="hidden" name="verzonden" value="true"/>
+    <button type="submit">Ok</button>
+</form>

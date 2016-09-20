@@ -1,0 +1,91 @@
+<form method="post" action="/main/profile">
+<button type="submit" name="button" style="float:right;" >opslaan</button>
+<h2>Profiel</h2>
+    <table>
+        <tr>
+            <td>
+                <b><p>Naam:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{naam}}"      name="naam"         type=text    value="{{naam}}"/>
+            </td>
+            <td>
+                <b><p>Achternaam:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{achternaam}}"      name="achternaam"         type=text    value="{{achternaam}}"/>
+            </td>
+            <td>
+                <b><p>E-mailadres:</p></b>
+            </td>
+            <td>
+                <input disabled     placeholder="{{email}}"      name="email"         type="email"    value="{{email}}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b><p>Land:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{land}}"      name="land"         type=text    value="{{land}}"/>
+            </td>
+            <td>
+                <b><p>Plaats:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{plaats}}"      name="plaats"         type=text    value="{{plaats}}"/>
+            </td>
+            <td>
+                <b><p>Postcode:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{postcode}}"      name="postcode"         type=text    value="{{postcode}}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b><p>Adres:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{straat}}"      name="straat"         type=text    value="{{straat}}"/>
+            </td>
+            <td>
+                <input placeholder="{{huisnummer}}"      name="huisnummer"         class="short"     type=number    value="{{huisnummer}}"/><input placeholder="{{toevoeging}}"   class="short"   name="toevoeging"         type=text    value="{{toevoeging}}"/>
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <b><p>Telefoonnummer 1:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{telefoon1}}"      name="telefoon1"         type=text    value="{{telefoon1}}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b><p>IBAN nummer:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{reknummer}}"      name="reknummer"         type=text    value="{{reknummer}}"/>
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <b><p>Telefoonnummer 2:</p></b>
+            </td>
+            <td>
+                <input placeholder="{{telefoon2}}"      name="telefoon2"         type=text    value="{{telefoon2}}"/>
+            </td>
+        </tr>
+
+    </table>
+
+<input type="hidden" name="verzonden" value="true"/>
+
+
+</form>

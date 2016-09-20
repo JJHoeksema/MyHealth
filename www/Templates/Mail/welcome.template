@@ -1,0 +1,15 @@
+Hallo {{name}},<br/>
+<br/>
+        Bedankt voor het registreren bij citypark. Wij hebben zojuist uw login gegevens verwerkt en een account voor u gemaakt. Voordat u kunt inloggen
+        moet u uw account eerst activeren.
+<br/>
+<br/>
+        Klik op <a href="http://citypark.marwijnn.me/main/index/activate/{{key}}/{{date}}">Activeren</a> om uw account te activeren<br/>
+<br/>
+        Veel parkeer plezier bij citypark<br/>
+<br/>
+        Met vriendelijke groet<br/>
+<br/>
+<br/>
+        Het CityPark Team
+<br/>

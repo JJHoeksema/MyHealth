@@ -1,0 +1,6 @@
+    <tr>
+        <td>{{id}}</td>
+        <td>{{datumbegin}}</td>
+        <td>{{datumeind}}</td>
+        <td>{{tarief}}</td>
+        <td>{{createdate}}</td>

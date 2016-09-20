@@ -1,0 +1,2 @@
+<a href="/Beheer/service/openstaande/?id={{id}}" class="button">Opstaande aanvragen</a>
+<a href="/Beheer/service/afgehandeld/?id={{id}}" class="button">Afgehandelde aanvragen</a>

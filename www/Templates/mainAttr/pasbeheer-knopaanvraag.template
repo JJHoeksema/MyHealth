@@ -1,0 +1,5 @@
+<form method="get" action = "/main/pas/aanvragen/">
+    <button type="submit" name="submit" style="float:right;" >Passen aanvragen</button>
+    <input type="hidden" name="aboid" value="{{aboid}}"/>
+    <input type="hidden" name="set" value="{{set}}"/>
+</form>

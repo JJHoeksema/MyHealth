@@ -1,0 +1,9 @@
+Options +FollowSymLinks
+IndexIgnore */*
+# Turn on the RewriteEngine
+RewriteEngine On
+#  Rules
+# Ignore Data folder
+RewriteCond %{REQUEST_URI} !Data
+#redirect everything to index.php
+RewriteRule . index.php
