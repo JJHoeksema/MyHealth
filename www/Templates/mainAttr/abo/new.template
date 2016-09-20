@@ -1,0 +1,28 @@
+<a href="/main/abo/overzicht" class="button" style="float:right; ">Overzicht</a>
+<h2>Nieuw Abonnement</h2>
+<p>U kunt het veld einddatum leeg laten indien dat onbekend is.</p>
+{{error}}
+
+<form method="get" action="/main/abo/newAbcheck/">
+
+    <table>
+        <tr>
+            <td>
+                <b><p>Ingangdatum</p></b>
+            </td>
+            <td>
+                <input name="start"         type=date    value="{{startdate}}"/>
+            </td>
+            <td>
+                <b><p>Einddatum</p></b>
+            </td>
+            <td>
+                <input name="end"         type=date    value="{{enddate}}"/>
+            </td>
+        </tr>
+
+    </table>
+<p>{{fout}}</p>
+    <button type="submit" name="button" >opslaan</button>
+</form>
+

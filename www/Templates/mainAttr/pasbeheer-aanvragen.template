@@ -1,0 +1,13 @@
+<form method="get" action="/main/pas/overzicht/">
+<button type="submit" name="submit" style="float:right;" value="true" >Aanvragen</button>
+<button type="submit" name="terug" style="float:right;" >Ga terug</button>
+
+<h2>Abonnee- en bezoekerspas aanvragen</h2>
+<p>Als uw beide passen zijn geblokkeerd kunt u nieuwe passen aanvragen.</p>
+
+<p>Weet u zeker dat u een nieuwe abonnee- en bezoekerspas wilt aanvragen?.</p>
+
+<input type="hidden" name="aanvragen" value="true"/>
+<input type="hidden" name="aboid" value="{{aboid}}"/>
+<input type="hidden" name="set" value="{{set}}"/>
+</form>

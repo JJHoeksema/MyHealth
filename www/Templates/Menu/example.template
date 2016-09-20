@@ -1,0 +1,4 @@
+<a href="{{url}}example/output/index">index</a>
+<a href="{{url}}example/output/input/var1/var2/0213/text/0xff//emptyVariableSkipped/no injection/?string=text&num=2">input</a>
+<a href="{{url}}example/output/session">session</a>
+<a href="{{url}}example/output/generateAllModels">generate all models(slow)</a>

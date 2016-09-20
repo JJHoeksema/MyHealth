@@ -1,0 +1,9 @@
+    <tr>
+        <td>{{id}}</td>
+        <td>{{categorie}}</td>
+        <td>{{datumbegin}}</td>
+        <td>{{datumeind}}</td>
+        <td>{{tarief}}</td>
+        <td>{{permin}}</td>
+        <td>{{max}}</td>
+        <td>{{createdate}}</td>

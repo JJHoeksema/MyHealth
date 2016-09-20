@@ -1,0 +1,2 @@
+    <td><a href="/Beheer/tarief/bewerkcat/?id={{id}}" class="button">Bewerk</a></td>
+    <td><a href="/Beheer/tijdtarief/index/?categorie={{categorie}}" class="button">Tijden inzien</a></td>

@@ -1,0 +1,55 @@
+<?php
+    namespace Beheer;
+    require_once("autoload.php");
+
+    use DMF\App;
+    use DMF\Ext\Module;
+    use DMF\Page;
+    
+    class main extends Module{
+    
+        public function getName() {
+            return "Beheer";
+        }
+        
+        public function getMainRoute() {
+            return ["controller" => "index", "action" => "index"];
+        }
+        
+        public function isLibrary(){
+            return false;
+        }
+        
+        public function handleEvent($event) {
+            switch($event->getName()){
+                case "StatusChangeEvent":
+                    /** @noinspection PhpUndefinedMethodInspection */
+                    $this->handleStatusEvent($event->getStatusCode(), $event->getMessage());
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        }
+        
+        private function handleStatusEvent($code, $msg){
+            $page = App::getInstance()->getPage();
+            $page->clear();
+            switch($code){
+                case 404:
+                     $page->add( (new Page\HtmlTag("h1", ["style" => "color:red"]))
+                                    ->add(new Page\Text("Not Found"))
+                                );
+                     break;
+                case 500:
+                    $page->add( (new Page\HtmlTag("h1"))
+                                    ->add(new Page\Text("Internal Server Error")) 
+                                );
+                    break;
+            }
+            $page->add( (new Page\HtmlTag("p"))->add(new Page\Text($msg,false)) );
+           
+        }
+        
+    }
+?>

@@ -1,0 +1,52 @@
+<?php
+    namespace ErrorHandler;
+    require_once("autoload.php");
+
+    use DMF\App;
+    use DMF\Ext\Module;
+    use DMF\Page;
+    
+    class main extends Module{
+    
+        public function getName() {
+            return __NAMESPACE__;
+        }
+        
+        public function getMainRoute() {
+            return [];
+        }
+        
+        public function isLibrary(){
+            return true;
+        }
+        
+        public function handleEvent($event) {
+            switch($event->getName()){
+                case "StatusChangeEvent":
+                    /** @noinspection PhpUndefinedMethodInspection */
+                    $this->handleStatusEvent($event->getStatusCode(), $event->getMessage());
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        }
+        
+        private function handleStatusEvent($code, $msg){
+            $page = App::getInstance()->getPage();
+            $dataUrl = App::getInstance()->getRequestHandler()->getProtocol() . "://" .
+                App::getInstance()->getRequestHandler()->getHost() . '/Data/';
+            $page->clear();
+            switch($code){
+                case 404:
+                     $page->add( (new Page\Template("e404"))->add("data_url", new Page\Text($dataUrl)));
+                     break;
+                case 500:
+                    $page->add( (new Page\Template("e500"))->add("data_url", new Page\Text($dataUrl)));
+                    break;
+            }
+           
+        }
+        
+    }
+?>

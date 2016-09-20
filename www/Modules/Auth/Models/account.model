@@ -1,0 +1,16 @@
+{
+  "Table":"Auth-account",
+  "Columns":{
+    "id":"num",
+    "id_person":"num",
+    "id_group":"num",
+    "username":"string",
+    "password":"string",
+    "timestamp_start":"num",
+    "timestamp_end":"num",
+    "firstName":"string",
+    "lastName":"string",
+    "groupName":"string",
+    "accessLevel":"num"
+  }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>404 - niet gevonden</title>
+    <link rel="icon" href="{{data_url}}favicon.ico"/>
+    <link rel="stylesheet" href="{{data_url}}style.css"/>
+    <link rel="stylesheet" href="{{data_url}}nav.css"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<nav>
+</nav>
+<div class="Menu">
+
+</div>
+<main>
+    <h2>Internal Server Error</h2>
+    <p>Er is iets misgegaan, komt waarschijnlijk door netbeans</p>
+    <p>klik <a href="/">hier</a> om naar de homepagina te gaan</p>
+    <pre>
+        {{stacktrace}}
+    </pre>
+</main>
+</body>
+</html>

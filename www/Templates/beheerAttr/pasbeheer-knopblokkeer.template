@@ -1,0 +1,5 @@
+<form method="get" action = "/beheer/pass/blokkeren/">
+    <button type="submit" name="submit" style="float:right;" >Blokkeer</button>
+    <input type="hidden" name="aboid" value="{{aboid}}"/>
+    <p>{{form}}</p>
+</form>

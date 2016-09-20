@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>404 - niet gevonden</title>
+    <link rel="icon" href="{{data_url}}favicon.ico"/>
+    <link rel="stylesheet" href="{{data_url}}style.css"/>
+    <link rel="stylesheet" href="{{data_url}}nav.css"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<nav>
+</nav>
+<div class="Menu">
+    {{Menu}}
+</div>
+<main>
+    <h2>Deze pagina kon niet gevonden worden</h2>
+    <p>klik <a href="/">hier</a> om naar de homepagina te gaan</p>
+</main>
+</body>
+</html>

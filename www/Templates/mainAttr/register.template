@@ -1,0 +1,111 @@
+<h2>Registreer bij Citypark</h2>
+<p class="errors">
+    {{errors}}
+</p>
+
+<form method="post" action = "/main/index/register">
+    <div class="group">
+        <h1>Login gegevens</h1>
+        <table class="spacing">
+            <tr>
+                <th>
+                    Email:
+                </th>
+                <td>
+                    <input required     placeholder="email"      name="email"         type="email"    class="long" value="{{email}}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Wachtwoord:
+                </th>
+                <td>
+                    <input required     placeholder="wachtwoord"            name="pass"   type="password"    class="top long"/><br/>
+                    <input required     placeholder="herhaal wachtwoord"    name="pass2"   type="password"   class="long" />
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="group">
+        <h1>Contact gegevens</h1>
+        <table class="spacing">
+            <tr>
+                <th>
+                    Voornaam:
+                </th>
+                <td>
+                    <input required     placeholder="voornaam"      name="naam"         type="text"     class="long" value="{{naam}}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Achternaam:
+                </th>
+                <td>
+                    <input required     placeholder="achternaam"    name="achternaam"   type="text"     class="long" value="{{achternaam}}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Telefoon:
+                </th>
+                <td>
+                    <input required     placeholder="telnummer1"    name="telnummer1"   type="text"     class="long top"    value="{{telnummer1}}"/><br/>
+                    <input              placeholder="telnummer2"    name="telnummer2"   type="text"     class="long"        value="{{telnummer2}}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    IBAN nr:
+                </th>
+                <td>
+                    <input required     placeholder="bijv. NL22 CTPK 0123456789"    name="reknummer"    type="text"    class="long"     value="{{reknummer}}"/>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="group">
+        <h1>Adres gegevens</h1>
+        <table class="spacing">
+            <tr>
+                <th>
+                    Land:
+                </th>
+                <td>
+                    <input required     placeholder="land"      name="land"         type="text"     class="long"    value="{{land}}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Plaats:
+                </th>
+                <td>
+                    <input required     placeholder="plaats"    name="plaats"       type="text"     class="long"    value="{{plaats}}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Postcode:
+                </th>
+                <td>
+                    <input required     placeholder="postcode"  name="postcode"     type="text"     class="long"    value="{{postcode}}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Adres:
+                </th>
+                <td>
+                    <input required     placeholder="straat"    name="straat"       type="text"                     value="{{straat}}"/>
+                    <input required     placeholder="nr."       name="huisnummer"   type="number"   class="short"   value="{{huisnummer}}"/>
+                    <input              placeholder="toev."     name="toevoeging"   type="text"     class="short"   value="{{toevoeging}}"/>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <hr class="clear"/>
+    <button type="submit">Aanmelden</button>
+</form>

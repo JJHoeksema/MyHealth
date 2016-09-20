@@ -1,0 +1,8 @@
+<h2>Kies het abonnement nummer om te blokkeren</h2>
+<a href="/beheer/abo/" class="button" style="float:right; ">Deblokkeren</a>
+<form method="get" action="/Beheer/abo/block/">
+
+    <input type="number" name="id"><br>
+
+    <button type="submit" name="button" style="float:left;" >kies</button>
+</form>

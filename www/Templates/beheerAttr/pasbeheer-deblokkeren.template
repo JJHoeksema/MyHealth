@@ -1,0 +1,15 @@
+<form method="get" action="/beheer/pass/overzicht/">
+    <button type="submit" name="submit" style="float:right;" value="true" >Deblokkeer</button>
+    <button type="submit" name="terug" style="float:right;" value="false" >Ga terug</button>
+
+    <h2>Abonnee- en bezoekerspas deblokkeren</h2>
+    <p>Passen deblokkeren van: </p>
+    <table>
+    <tr>
+        <td>Passen deblokkeren van: </td>
+        <td><input type="text", name="set" value="1", placeholder="1"/>
+    </tr>
+    </table>
+    <input type="hidden" name="deblokkeer" value="true"/>
+    <input type="hidden" name="aboid" value="{{aboid}}" placeholder="{{aboid}}"/>
+</form>

@@ -1,0 +1,46 @@
+<table>
+    <tr>
+        <td>
+            <b>Factuurnummer:</b>
+        </td>
+        <td>
+            {{nmmr}}
+        </td>
+        <td>
+            <b>Bedrag:</b>
+        </td>
+        <td>
+            {{bedrag}}
+        </td>
+        <td>
+            <b>Factuurnummer:</b>
+        </td>
+        <td>
+            {{nmmr}}
+        </td>
+        <td>
+            <b>Maandnummer:</b>
+        </td>
+        <td>
+            {{maand}}
+        </td>
+        <td>
+            <b>Status:</b>
+        </td>
+        <td>
+            {{status}}
+        </td>
+        <td>
+            <b>Vervaldatum:</b>
+        </td>
+        <td>
+            {{vervaldatum}}
+        </td>
+        <td>
+            <a href="/main/factuur/pdffactuur/{{nmmr}}" class="button" style="float:right; ">PDF versie</a>
+        </td>
+
+    </tr>
+
+
+</table><br>

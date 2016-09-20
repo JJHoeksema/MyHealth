@@ -1,0 +1,24 @@
+<?php
+    namespace PDF;
+    require_once("autoload.php");
+
+    use DMF\App;
+    use DMF\Events\StatusChangeEvent;
+    use DMF\Ext\Module;
+    use DMF\Page;
+    
+    class main extends Module{
+    
+        public function getName() {
+            return __NAMESPACE__;
+        }
+        
+        public function getMainRoute() {
+            return [];
+        }
+        
+        public function isLibrary(){
+            return true;
+        }
+    }
+?>

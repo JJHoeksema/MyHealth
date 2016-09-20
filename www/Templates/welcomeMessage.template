@@ -1,0 +1,18 @@
+<p>
+    Thank you for downloading <a href="https://github.com/mmdk95/DMF">DMF</a>, for any questions please contact Github user <a href="https://github.com/mmdk95">mmdk95</a>
+</p>
+<p>
+    There is still a huge list of potential features to this framework, however, the most crucial&ndash;
+    and definitely the most important&ndash; next step is to start documenting this framework, so new
+    users can easily get started with developing their applications more quickly and also secure.
+</p>
+
+<p>
+    For now, you can check out <b>{{file}}</b>, in which you can find a few commented examples that make use of
+    the functionality provided by this framework. It is recommended to use an IDE that supports PHPdoc to get a
+    basic idea what which function does.
+</p>
+
+<p style="color:#C00">
+    displays contents of welcomeMessage.template and the "text" variable: "{{text}}"
+</p>
