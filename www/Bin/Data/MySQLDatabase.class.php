@@ -39,7 +39,7 @@
          * @param string $password
          * @throws \Exception
          */
-        public function __construct($host = "localhost", $username = "root", $password = ""){
+        public function __construct($host = "localhost", $username = "niekghs152_mh", $password = "myhealth"){
             mysqli_report(MYSQLI_REPORT_STRICT);
             $this->host = $host;
             $this->user = $username;

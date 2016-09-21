@@ -1,0 +1,11 @@
+{
+"Database":"niekghs152_myhealth",
+"Table":"Functie",
+"References":[
+],
+"Columns":{
+"id":"num",
+"naam":"text",
+"niveau":"num"
+}
+}

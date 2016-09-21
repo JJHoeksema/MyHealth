@@ -30,18 +30,15 @@ class ControllerIncludes extends Controller{
 
     public function __construct(){
         parent::__construct();
-        $this->db = new Data\MySQLDatabase("localhost", "root", "root");
+        $this->db = new Data\MySQLDatabase("localhost", "niekghs152_mh", "myhealth");
         $this->input = $this->app->getInputHandler();
         $this->request = $this->app->getRequestHandler();
-        $this->mailer = new Mailer("citypark", "no-reply@citypark.marwijnn.me");
 
         $this->template = new Page\Template('template');
 
         $this->user = new Account();
 
-        $this->bank = new Bank( "citypark.marwijnn.me:8080/cp-bank/BankService",
-            "MY-SUPER-SECRET-API-KEY",
-            "NL38CPBK0000100000");
+
 
         $this->template->add("data_url", new Page\Text(
             $this->app->getRequestHandler()->getProtocol() . "://" .

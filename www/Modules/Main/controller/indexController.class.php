@@ -18,7 +18,7 @@
             $welkom->add("name", new Page\Text($this->user->getFirstName()));
             $welkom->add("key", new Page\Text($this->user->getFirstName()));
             $mail->add("content", $welkom);
-            $mail->add("Title", new Page\Text("Welkom bij CityPark"));
+            $mail->add("Title", new Page\Text("Welkom bij MyHealt"));
             echo $mail->render();
         }
 
@@ -31,8 +31,7 @@
         }
 
         public function index(){
-            $this->setTitle("Home | CityPark");
-
+            $this->setTitle("Home | MyHealth");
             $welcome = new Page\Template("mainAttr/welcome");
             $this->template->add("content", $welcome);
         }

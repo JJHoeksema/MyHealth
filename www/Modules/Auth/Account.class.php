@@ -15,7 +15,8 @@ class Account {
     private static $loggedIn;
 
     public function __construct(){
-        $this->db           =   new Data\MySQLDatabase("localhost", "root", "root");
+        return;
+        $this->db           =   new Data\MySQLDatabase("localhost", "niekghs152_mh", "myhealth");
         $this->session      =   new Data\SessionData();
         $this->userModel    =   new Data\FileModel("User");
         $this->lockModel    =   new Data\FileModel("Login_Lock");
