@@ -10,7 +10,7 @@
 	<body>
 		<nav>
 			{{extra}}
-			<a class="profile" href="/main/profile">{{name}}</a>
+			<a class="profile" href="/main/index/register">{{name}}</a>
 		</nav>
 		<div class="Menu">
 			{{Menu}}
