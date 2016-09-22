@@ -7,3 +7,6 @@ RewriteEngine On
 RewriteCond %{REQUEST_URI} !Data
 #redirect everything to index.php
 RewriteRule . index.php
+#path session
+php_value session.save_path /tmp
+php_value session.save_handler files

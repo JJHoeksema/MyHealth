@@ -1,0 +1,12 @@
+{
+"Database":"niekghs152_myhealth",
+"Table":"Login_Lock",
+"References":[
+],
+"Columns":
+{"id":"num",
+"type":"enum",
+"waarde":"text",
+"lockeind":"dateTime"
+}}
+
