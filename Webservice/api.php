@@ -21,7 +21,7 @@ if (strcmp($method, 'POST')) {
         if ($value === null) return null;
         return mysqli_real_escape_string($link,(string)$value);
     }, array_values($input));
-    $sql = "insert into `$table` set $set";
+    $sql = "insert into `$table` (".implode(',', $columns).") values('".implode("','",values)."')";
 
     // build the SET part of the SQL command
     $set = '';
