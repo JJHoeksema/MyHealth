@@ -1,6 +1,0 @@
-<div class="beeindigd-abo">
-    <h2>Abonnementnummer: {{id}}</h2>
-    <label>Begin Datum:</label> <span> {{startdate}}</span><br>
-    <label>Einddatum:</label> <span> {{enddate}}</span><br>
-    <a href="/main/factuur/overzicht/?id={{id}}" class="button" >Facturen</a>
-</div>

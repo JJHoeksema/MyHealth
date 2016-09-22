@@ -1,7 +1,0 @@
-<a href="/main/abo/newAb" class="button" style="float:right; ">Nieuw Abonnement</a>
-<h1>Overzicht Abonnementen</h1>
-<p>Dit is het overzicht van al uw abonnementen. Inzien u een abonnement wilt afsluiten klik dan op de knop hiernaast.</p>
-{{error}}
-
-{{content}}
-

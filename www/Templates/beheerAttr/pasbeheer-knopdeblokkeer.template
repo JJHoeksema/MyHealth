@@ -1,4 +1,0 @@
-<form method="get" action = "/beheer/pass/deblokkeren/">
-    <button type="submit" name="submit" style="float:right;" >Deblokkeer</button>
-    <input type="hidden" name="aboid" value="{{aboid}}"/>
-</form>

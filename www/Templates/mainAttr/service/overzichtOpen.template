@@ -1,7 +1,0 @@
-<tr>
-    <td>{{id}}</td>
-    <td>{{titel}}</td>
-    <td>{{createdate}}</td>
-    <td>{{medewerker1}} {{medewerker2}}</td>
-    <td><a href="/main/service/service/?id={{id}}" class="button">inzien</a></td>
-</tr>

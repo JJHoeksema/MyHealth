@@ -1,9 +1,0 @@
-<form method="post">
-    <table class="spacing">
-    <tr>
-        <th><b>Categorie</b></th>
-        <th><b>Begindatum</b></th>
-        <th><b>Einddatum</b></th>
-        <th><b>Tarief</b></th>
-        <th><b>Maximaal tarief</b></th>
-    </tr>
