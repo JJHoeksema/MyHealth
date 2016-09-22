@@ -3,6 +3,7 @@
 <div class="group">
     <h1>Over MyHealth</h1>
     <p>MyHealth is een online tool om al uw zorg gerelateerde zaken te beheren.</p>
+    <p>{{text}}</p>
 </div>
 <div class="group">
     <h1>Parkeren bij MyHealth</h1>

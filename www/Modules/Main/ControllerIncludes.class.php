@@ -1,6 +1,6 @@
 <?php
-namespace Main;
 
+namespace Main;
 use Auth\Account;
 use Auth\Permission;
 
@@ -30,7 +30,8 @@ class ControllerIncludes extends Controller{
 
     public function __construct(){
         parent::__construct();
-        $this->db = new Data\MySQLDatabase("localhost", "niekghs152_mh", "myhealth");
+        $config = new \Db_config();
+        $this->db = new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
         $this->input = $this->app->getInputHandler();
         $this->request = $this->app->getRequestHandler();
 

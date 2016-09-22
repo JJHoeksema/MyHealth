@@ -17,7 +17,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
     namespace DMF\Data;
-
     use DMF\Data\Specifier;
     use DMF\Data\Specifier\SpecifierObject;
     use DMF\Data\Specifier\WhereCheck;
@@ -39,11 +38,12 @@
          * @param string $password
          * @throws \Exception
          */
-        public function __construct($host = "localhost", $username = "niekghs152_mh", $password = "myhealth"){
+        public function __construct($host = "localhost", $username = "h", $password = "h"){
             mysqli_report(MYSQLI_REPORT_STRICT);
-            $this->host = $host;
-            $this->user = $username;
-            $this->pass = $password;
+            $config = new \Db_config();
+            $this->host = $config->getHost();
+            $this->user = $config->getUsername();
+            $this->pass = $config->getPw();
             $this->databases = [];
             try {
                 try {

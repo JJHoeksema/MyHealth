@@ -1,5 +1,4 @@
 <?php
-
 namespace Auth;
 
 use DMF\_Static;
@@ -15,8 +14,8 @@ class Account {
     private static $loggedIn;
 
     public function __construct(){
-        return;
-        $this->db           =   new Data\MySQLDatabase("localhost", "niekghs152_mh", "myhealth");
+        $config = new \Db_config();
+        $this->db           =   new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
         $this->session      =   new Data\SessionData();
         $this->userModel    =   new Data\FileModel("User");
         $this->lockModel    =   new Data\FileModel("Login_Lock");
