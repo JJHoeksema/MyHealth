@@ -90,18 +90,6 @@ ____§§___§§______§"));
             if($this->input->post("email") != null && !$account->userExist($this->input->post("email"))) {
                 $result = $account->register($this->input->post("email"), $this->input->post("pass"), $id);
                 if ($result != null) {
-
-                    $mail = new Page\Template("Mail/main");
-                    $welkom = new Page\Template("Mail/welcome");
-                    $welkom->add("name", new Page\Text($this->input->post("naam")));
-                    $welkom->add("key", new Page\Text($result['key']));
-                    $welkom->add("date", new Page\Text($result['date']));
-                    $mail->add("content", $welkom);
-                    $mail->add("Title", new Page\Text("Welkom bij CityPark"));
-
-                    $this->mailer->setBody($mail->render());
-                    $this->mailer->subject("Welkom bij Citypark");
-                    $this->mailer->send($this->input->post("email"));
                     $this->request->redirect('/main/index/register/success');
                     return true;
                 }else{
@@ -168,6 +156,7 @@ ____§§___§§______§"));
                 "huisnummer"    => $this->input->post("huisnummer"),
                 "toevoeging"    => $this->input->post("toevoeging"),
             ];
+
             $result = $this->db->insert($nawModel, $data);
             $id = $result['Naw-id'];
 
