@@ -3,6 +3,8 @@ namespace Auth;
 
 use DMF\_Static;
 use DMF\Data;
+use DMF\Db_config;
+
 
 class Account {
     private $session;
@@ -14,7 +16,7 @@ class Account {
     private static $loggedIn;
 
     public function __construct(){
-        $config = new \Db_config();
+        $config = new Db_config();
         $this->db           =   new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
         $this->session      =   new Data\SessionData();
         $this->userModel    =   new Data\FileModel("User");

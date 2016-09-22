@@ -4,12 +4,12 @@ namespace Main;
 use Auth\Account;
 use Auth\Permission;
 
-use BankAPI\Bank;
+
 
 use DMF\Ext\Controller;
 use DMF\Page;
 use DMF\Data;
-use Mailer\Mailer;
+use DMF\Db_config;
 
 class ControllerIncludes extends Controller{
 
@@ -30,7 +30,7 @@ class ControllerIncludes extends Controller{
 
     public function __construct(){
         parent::__construct();
-        $config = new \Db_config();
+        $config = new Db_config();
         $this->db = new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
         $this->input = $this->app->getInputHandler();
         $this->request = $this->app->getRequestHandler();
