@@ -1,9 +1,8 @@
 <?php
 
-$method = $_SERVER['REQUEST_METHOD'];
 $input = json_decode(file_get_contents('php://input'), true);
 
-if (strcmp($method, 'POST')) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // connect to the database
     $link = mysqli_connect('h', 'h', 'd', 'd');
     mysqli_set_charset($link, 'utf8');
@@ -39,6 +38,10 @@ if (strcmp($method, 'POST')) {
         executeInsertQuery($sql, $link);
     }
 
+    // close mysql connection
+    mysqli_close($link);
+
+    http_response_code(200);
 }
 
 function executeInsertQuery($sql, $link) {
@@ -72,6 +75,3 @@ function getInsertQuery($input, $table, $link) {
     }, array_values($input));
     return "insert into `$table` (".implode(',', $columns).") values('".implode("','",$values)."')";
 }
-
-// close mysql connection
-mysqli_close($link);
