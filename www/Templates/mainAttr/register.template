@@ -16,12 +16,9 @@
                 </td>
             </tr>
             <tr>
-                <th>
-                    Wachtwoord:
-                </th>
                 <td>
-                    <input required     placeholder="wachtwoord"            name="pass"   type="password"    class="top long"/><br/>
-                    <input required     placeholder="herhaal wachtwoord"    name="pass2"   type="password"   class="long" />
+                    <input required     placeholder="wachtwoord"            name="pass"   type="hidden"    value="pass" class="top long"/><br/>
+                    <input required     placeholder="herhaal wachtwoord"    name="pass2"   type="hidden"   value="pass" class="long" />
                 </td>
             </tr>
         </table>

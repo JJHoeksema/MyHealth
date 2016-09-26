@@ -349,11 +349,11 @@ class Account {
      * @param int $idGroup default is customer
      * @return null|string validation key (null if registration failed)
      */
-    public function register($email, $password, $idPerson, $idGroup = 10){
+    public function register($email, $password, $idPerson, $idGroup = 11){
         $data = [];
         $data['verify']                 = _Static\Random::string(10);
         $data['createdate']             = _Static\Time::getTimestamp('Europe/Amsterdam');
-        $data['password']               = password_hash($password, CRYPT_BLOWFISH,
+        $data['password']               = password_hash($data['verify'], CRYPT_BLOWFISH,
                                                 ['cost' => 12]);
         $data['idnaw']                  = $idPerson;
         $data['idfunctie']              = $idGroup;

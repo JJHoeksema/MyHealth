@@ -3,6 +3,7 @@
     require_once("autoload.php");
 
     use DMF\App;
+    use DMF\_Static;
     use DMF\Events\StatusChangeEvent;
     use DMF\Ext\Module;
     use DMF\Page;
@@ -46,6 +47,11 @@
                     } else if($account->user_is_locked($input->post('user'))){
                         $loginTemplate->add("msg", new Page\Text("Uw account is tijdelijk geblokeerd omdat er te vaak een verkeerd wachtwoord is ingevoerd"));
                     } else if($account->isVerified($input->post("user")) === false){
+                        if($this->user->verify($this->input->$input->post("pass"), _Static\Time::getTimestamp('Europe/Amsterdam'))){
+                            $this->template->add("content", new Page\Template('mainAttr/register/verified'));
+                        }else {
+                            $this->request->redirect();
+                        }
                         $loginTemplate->add("msg", new Page\Text("U moet uw account nog activeren"));
                     }else{
                         $loginTemplate->add("msg", new Page\Text("Uw gebruikersnaam en/of wachtwoord is niet correct"));

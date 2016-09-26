@@ -18,6 +18,7 @@
     <form method="post">
         <input required name="user" type="email" placeholder="email" value="{{email}}" class="top"/>
         <input required name="pass" type="password" placeholder="wachtwoord"/>
+
         <button type="submit">login</button>
     </form>
 </main>
