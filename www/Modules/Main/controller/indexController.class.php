@@ -6,9 +6,13 @@
     use Main\NoPermission;
     use DMF\Page;
     use DMF\Data;
+    use DMF\Db_config;
+
 
     class indexController extends NoPermission{
 
+        private $userModel;
+        protected $db;
         public function test() {
             if(!$this->user->isLoggedIn()) return;
             $array = [];
@@ -152,5 +156,29 @@
             $this->user->logOut();
             $this->request->redirect();
         }
+
+        public function change(){
+            $this->setTitle("Login | MyHealth");
+            $change = new Page\Template("mainAttr/register/changepw");
+            if($_POST["pass"]!=null){
+                if($_POST['pass']==$_POST["pass2"]){
+                    $config = new Db_config();
+                    $this->db           =   new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
+                    $this->userModel    =   new Data\FileModel("User");
+                    $selector = new Data\Specifier\Where($this->userModel, [
+                        new Data\Specifier\WhereCheck("verify", "==", $_SESSION['ver']),
+                    ]);
+                    $pass = password_hash($_POST['pass'], CRYPT_BLOWFISH,
+                        ['cost' => 12]);
+                    $this->db->update($this->userModel, ["verify" => null, "verified" => 1,"password" => $pass], $selector);
+                    $change->add("msg", new Page\Text("Het wachtwoord is gewijzigd."));
+                }
+                else{
+                    $change->add("msg", new Page\Text("De wachtwoorden komen niet overeen"));
+                }
+            }
+            $this->template->add("content", $change);
+        }
+
 
     }

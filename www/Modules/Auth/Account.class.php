@@ -193,7 +193,9 @@ class Account {
     }
 
     public function isVerified($username){
-        $selector = new Data\Specifier\Where($this->userModel, new Data\Specifier\WhereCheck('email', '==', $username));
+        $selector = new Data\Specifier\Where($this->userModel, [new Data\Specifier\WhereCheck('email', '==', $username),
+            new Data\Specifier\WhereCheck('verified', '==', 0)
+        ]);
         $result = $this->db->select($this->userModel, null, $selector);
         if(count($result) != 1) return null;
         if($result['User-verified'] != 1) return false;
