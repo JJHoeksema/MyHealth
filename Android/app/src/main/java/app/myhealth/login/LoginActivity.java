@@ -1,4 +1,4 @@
-package app.myhealth;
+package app.myhealth.login;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -30,6 +30,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
+
+import app.myhealth.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
