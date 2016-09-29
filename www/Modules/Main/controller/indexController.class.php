@@ -13,6 +13,7 @@
 
         private $userModel;
         protected $db;
+        private $email;
         public function test() {
             if(!$this->user->isLoggedIn()) return;
             $array = [];
@@ -22,7 +23,7 @@
             $welkom->add("name", new Page\Text($this->user->getFirstName()));
             $welkom->add("key", new Page\Text($this->user->getFirstName()));
             $mail->add("content", $welkom);
-            $mail->add("Title", new Page\Text("Welkom bij MyHealt"));
+            $mail->add("Title", new Page\Text("Welkom bij MyHealth"));
             echo $mail->render();
         }
 
@@ -97,9 +98,19 @@
 
         public function register() {
             $nawModel = new Data\FileModel("Naw");
-            $this->setTitle("Aanmelden | CityPark");
+            $this->setTitle("Aanmelden | MyHealth");
+            $config = new Db_config();
+            $this->db           =   new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
 
             if($this->input->arg(0) == "success"){
+                $this->userModel = new Data\FileModel("User");
+                $selector = new Data\Specifier\Where($this->userModel, [
+                    new Data\Specifier\WhereCheck("email", "==", $this->email),//$this->input->post("email")),
+                ]);
+                $data = $this->db->select($this->userModel, null, $selector);
+                var_dump($data);
+                die();
+
                 $this->template->add("content", new Page\Template("mainAttr/register-success"));
                 return;
             }
