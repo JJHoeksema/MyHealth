@@ -355,8 +355,7 @@ class Account {
         $data = [];
         $data['verify']                 = _Static\Random::string(10);
         $data['createdate']             = _Static\Time::getTimestamp('Europe/Amsterdam');
-        $data['password']               = password_hash($data['verify'], CRYPT_BLOWFISH,
-                                                ['cost' => 12]);
+        $data['password']               = md5($data['verify']);
         $data['idnaw']                  = $idPerson;
         $data['idfunctie']              = $idGroup;
         $data['email']                  = $email;

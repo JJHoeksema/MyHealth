@@ -179,8 +179,7 @@
                     $selector = new Data\Specifier\Where($this->userModel, [
                         new Data\Specifier\WhereCheck("verify", "==", $_SESSION['ver']),
                     ]);
-                    $pass = password_hash($_POST['pass'], CRYPT_BLOWFISH,
-                        ['cost' => 12]);
+                    $pass = md5($_POST['pass']);
                     $this->db->update($this->userModel, ["verify" => null, "verified" => 1,"password" => $pass], $selector);
                     $change->add("msg", new Page\Text("Het wachtwoord is gewijzigd."));
                 }
