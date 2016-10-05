@@ -20,7 +20,7 @@ public class Readings extends AbstractEntity
     private int _user_id;
 
     @SerializedName("Readings-value")
-    private int _value;
+    private String _value;
 
     @Override
     public Integer getId()

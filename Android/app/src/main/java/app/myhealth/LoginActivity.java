@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Intent intent = new Intent(this, NavigationDrawerActivity.class);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -73,6 +72,8 @@ public class LoginActivity extends AppCompatActivity {
         if( user != null )
         {
             Database.setUser(user);
+            Intent intent = new Intent(this, NavigationDrawerActivity.class);
+            startActivity(intent);
         }
         else
         {
