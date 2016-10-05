@@ -66,7 +66,14 @@
             if($this->input->post("email") != null && !$account->userExist($this->input->post("email"))) {
                 $result = $account->register($this->input->post("email"), $this->input->post("pass"), $id);
                 if ($result != null) {
-                    $this->request->redirect('/main/index/register/success');
+                    $this->userModel = new Data\FileModel("User");
+                    $selector = new Data\Specifier\Where($this->userModel, [
+                        new Data\Specifier\WhereCheck("email", "==", $this->input->post("email")),
+                    ]);
+                    $data = $this->db->select($this->userModel, null, $selector);
+                    $this->mailUser($data[0]);
+
+                    $this->request->redirect('main/index/register/success');
                     return true;
                 }else{
                     $template->add("errors", new Page\Text("Er is iets misgegaan met het registreren<br/>", false));
@@ -75,6 +82,23 @@
                 $template->add("errors", new Page\Text("Er is al een gebruiker met dit email adres<br/>", false));
             }
             return false;
+        }
+
+        private function mailUser($data) {
+            $pw = $data["User-verify"];
+            $email = $data["User-email"];
+            $emailFrom = "support@myhealth.nl";
+
+            $text = "Beste Klant,<br><br>
+                     Er is een account voor u aangemaakt in onze MyHealth service. Om dit account te activeren kunt u met uw emailadres en het tijdelijke wachtwoord $pw inloggen op de volgende link:<br>
+                     <a href=\"http://myhealth.niekgigengack.nl/main/index/login\">MyHealth Inloggen</a><br><br>
+                     Met vriendelijke groet,<br><br>
+                     De MyHealth klantenservice.";
+
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html; charset=utf-8" . "\r\n";
+            $headers .= "From: <$emailFrom>" . "\r\n";
+            mail($email, "MyHealth Account Registratie", $text, $headers);
         }
 
         private function getRegisterTemplate(){
@@ -103,14 +127,7 @@
             $this->db           =   new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
 
             if($this->input->arg(0) == "success"){
-                $this->userModel = new Data\FileModel("User");
-                $selector = new Data\Specifier\Where($this->userModel, [
-                    new Data\Specifier\WhereCheck("email", "==", $this->email),//$this->input->post("email")),
-                ]);
-                $data = $this->db->select($this->userModel, null, $selector);
-                var_dump($data);
-                die();
-
+                // hier was eerst usermodel.. kan weg als werkt
                 $this->template->add("content", new Page\Template("mainAttr/register-success"));
                 return;
             }
@@ -145,8 +162,8 @@
 
             $result = $this->db->insert($nawModel, $data);
             $id = $result['Naw-id'];
-
             $template = $this->getRegisterTemplate();
+
             if($this->createUser($id, $template)){
                 $this->request->redirect('main/index/register/success');
                 return;
