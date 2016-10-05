@@ -22,7 +22,6 @@ import app.myhealth.fragments.ProfileFragment;
 
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ProfileFragment.OnFragmentInteractionListener,
         MeasurementFragment.OnFragmentInteractionListener {
 
     @Override
@@ -122,12 +121,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
-    }
-
-    // TODO: from ProfileFragment, rename
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
     }
 
