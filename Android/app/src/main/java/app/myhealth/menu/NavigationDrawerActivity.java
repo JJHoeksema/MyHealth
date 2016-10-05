@@ -21,8 +21,7 @@ import app.myhealth.fragments.MeasurementFragment;
 import app.myhealth.fragments.ProfileFragment;
 
 public class NavigationDrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
-        MeasurementFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,9 +123,4 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
     }
 
-    // Communication with MeasurementFragment.
-    @Override
-    public void onSelectMeasurement(int id) {
-        // TODO: switch naar measurement view
-    }
 }

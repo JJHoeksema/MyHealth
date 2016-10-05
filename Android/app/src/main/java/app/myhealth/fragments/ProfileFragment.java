@@ -15,8 +15,6 @@ import app.myhealth.domain.User;
 
 public class ProfileFragment extends Fragment {
 
-    //private OnFragmentInteractionListener mListener;
-
     private User user;
 
     public ProfileFragment() {
@@ -36,9 +34,9 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        ((TextView)view.findViewById(R.id.profile_naam)).append(user.);
+        /*((TextView)view.findViewById(R.id.profile_naam)).append(user.);
         ((TextView)view.findViewById(R.id.profile_achternaam)).append(user.);
         ((TextView)view.findViewById(R.id.profile_land)).append(user.);
         ((TextView)view.findViewById(R.id.profile_plaats)).append(user.);
@@ -48,39 +46,8 @@ public class ProfileFragment extends Fragment {
         ((TextView)view.findViewById(R.id.profile_telnr1)).append(user.);
         ((TextView)view.findViewById(R.id.profile_telnr2)).append(user.);
         ((TextView)view.findViewById(R.id.profile_email)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_reknr)).append(user.);
+        ((TextView)view.findViewById(R.id.profile_reknr)).append(user.);*/
 
         return view;
     }
-
-    /*@Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    /*public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }*/
 }
