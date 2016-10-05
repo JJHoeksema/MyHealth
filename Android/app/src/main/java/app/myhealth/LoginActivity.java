@@ -1,5 +1,6 @@
 package app.myhealth;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import app.myhealth.api.ApiCommunicator;
 import app.myhealth.domain.Authenticate;
 import app.myhealth.domain.User;
 import app.myhealth.login.AsyncLogin;
+import app.myhealth.menu.NavigationDrawerActivity;
 import app.myhealth.util.EncryptionUtil;
 
 /**
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Intent intent = new Intent(this, NavigationDrawerActivity.class);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -70,7 +73,6 @@ public class LoginActivity extends AppCompatActivity {
         if( user != null )
         {
             Database.setUser(user);
-            // load intent
         }
         else
         {
