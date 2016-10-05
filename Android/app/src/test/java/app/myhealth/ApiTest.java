@@ -1,19 +1,14 @@
 package app.myhealth;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mindrot.jbcrypt.BCrypt;
 
-import java.util.concurrent.ExecutionException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 
-import app.myhealth.api.ApiCommunicator;
-import app.myhealth.api.Connector;
 import app.myhealth.domain.Authenticate;
-import app.myhealth.domain.User;
 import app.myhealth.util.EncryptionUtil;
 
 import static org.junit.Assert.assertEquals;
@@ -38,18 +33,23 @@ public class ApiTest
     @Test
     public void authenticate()
     {
-        String result = new Connector().doInBackground("login", authenticateJsonString);
+        String result = new ApiConnection().connectWithResponse("login/"+EncryptionUtil.getApiToken(authenticateJsonString), authenticateJsonString);
 
         assertEquals("", result);
+    }
 
+    @Test
+    public void api_token()
+    {
+        assertEquals(EncryptionUtil.getApiToken(""), "48b76552a2058c48b74e2f62f12ee6d7");
     }
 
     @Test
     public void password_encryption() throws Exception {
-        String password = "h";
-        String hashed = "$2y$12$mMCsZWL9kT/yN/LMIJ78uucb64a3SeBnI0pip9gPf3pqrDue5N/he";
+        String password = "test";
+        String hashed = "098f6bcd4621d373cade4e832627b4f6";
         assertEquals(
-                EncryptionUtil.getBlowfish(password),
+                EncryptionUtil.getMD5(password),
                 hashed
         );
     }
