@@ -7,17 +7,17 @@ import app.myhealth.domain.User;
  */
 public abstract class Database
 {
-    private User _user;
+    private static User _user;
 
 
-    public User get_user()
+    public static User getUser()
     {
         return _user;
     }
 
-    public void set_user(User _user)
+    public static void setUser(User user)
     {
-        this._user = _user;
+        _user = user;
     }
 
 }

@@ -4,11 +4,8 @@ import com.google.gson.Gson;
 
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.TimeZone;
-
 import app.myhealth.domain.Authenticate;
+import app.myhealth.domain.User;
 import app.myhealth.util.EncryptionUtil;
 
 import static org.junit.Assert.assertEquals;
@@ -18,24 +15,36 @@ import static org.junit.Assert.assertEquals;
  */
 public class ApiTest
 {
-    private String authenticateJsonString = "{\"User-email\":\"thoeksem00@gmail.com\",\"User-password\":\"h\"}";
+    private String authenticateJsonString = "{\"User-email\":\"thoeksema00@gmail.com\",\"User-password\":\"" + EncryptionUtil.getMD5("h") + "\"}";
+    private Gson _gson = new Gson();
 
     @Test
     public void authenticate_gson_string()
     {
+        Authenticate user = new Authenticate("thoeksema00@gmail.com", EncryptionUtil.getMD5("h"));
 
-        Gson gson = new Gson();
-        Authenticate user = new Authenticate("thoeksem00@gmail.com", "h");
+        assertEquals( _gson.toJson(user), authenticateJsonString );
+    }
 
-        assertEquals( gson.toJson(user), authenticateJsonString );
+    @Test
+    public void passwordTest()
+    {
+        assertEquals("2510c39011c5be704182423e3a695e91", EncryptionUtil.getMD5("h"));
     }
 
     @Test
     public void authenticate()
     {
-        String result = new ApiConnection().connectWithResponse("login/"+EncryptionUtil.getApiToken(authenticateJsonString), authenticateJsonString);
+        String result =
+                new ApiConnection().connectWithResponse(
+                        "login/"+EncryptionUtil.getApiToken(""),
+                        authenticateJsonString
+                );
 
-        assertEquals("", result);
+        User user = _gson.fromJson(result, User.class);
+
+        assertEquals(new Integer(79), user.getId());
+        assertEquals("achternaam", user.getAchternaam());
     }
 
     @Test
