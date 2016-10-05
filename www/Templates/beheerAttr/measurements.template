@@ -1,22 +1,27 @@
+<h2>Meting</h2>
 
 <table>
     <tr>
         <td>
+            <b>Meting nummer:</b>
         </td>
         <td>
             {{id}}
         </td>
         <td>
+            <b>Type:</b>
         </td>
         <td>
             {{type}}
         </td>
         <td>
+            <b>Naam:</b>
         </td>
         <td>
             {{naam}}
         </td>
         <td>
+            <b>Waarde:</b>
         </td>
         <td>
             {{value}}
