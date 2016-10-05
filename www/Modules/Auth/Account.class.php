@@ -303,7 +303,7 @@ class Account {
         }
         $result = $result[0];
         if($this->user_is_locked($username)) return false;
-        if (!password_verify ($password , $result['User-password'])){
+        if ($password == md5($result['User-password'])){
             $this->log_login($result['User-id']);
             $this->checkIPAndLock();
             $this->checkAndLock($result['User-id'], $username);
