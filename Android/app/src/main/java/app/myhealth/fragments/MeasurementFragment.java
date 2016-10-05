@@ -1,0 +1,63 @@
+package app.myhealth.fragments;
+
+import android.content.Context;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import app.myhealth.Database;
+import app.myhealth.R;
+
+public class MeasurementFragment extends Fragment {
+    //private ArrayList<Measurement> measurements;
+
+    public static MeasurementFragment newInstance(String param1, String param2) {
+        return new MeasurementFragment();
+    }
+    public MeasurementFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       // measurements = Database.getMeasurements();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_measurement, container, false);
+
+        TableLayout table = (TableLayout)view.findViewById(R.id.measurement_table);
+
+        Context context = this.getContext();
+        /*for (Measurement m : measurements) {
+            TableRow row = new TableRow(context);
+
+            TextView dateView = new TextView(context);
+            dateView.setText(m.date);
+            row.addView(dateView);
+
+            TextView typeView = new TextView(context);
+            typeView.setText(m.type);
+            row.addView(typeView);
+
+            TextView valueView = new TextView(context);
+            valueView.setText(m.value);
+            row.addView(valueView);
+
+            table.addView(row);
+        }*/
+        return view;
+    }
+
+}

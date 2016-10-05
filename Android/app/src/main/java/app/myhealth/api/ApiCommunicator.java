@@ -21,10 +21,10 @@ public abstract class ApiCommunicator
 {
     private static final Gson _gson = new Gson();
 
-    public static User authenticateUser(String username, String password)
+    public static User authenticateUser(String email, String password)
     {
-        String passwordEncrypted = EncryptionUtil.getBlowfish(password);
-        String jsonData = _gson.toJson( new Authenticate(username, passwordEncrypted) );
+        String passwordEncrypted = EncryptionUtil.getMD5(password);
+        String jsonData = _gson.toJson( new Authenticate(email, passwordEncrypted) );
 
         return getObjectFromJson( ApiCall.getJsonUser(jsonData), User.class );
     }
@@ -36,7 +36,10 @@ public abstract class ApiCommunicator
 
     public static <T> T getObjectFromJson(String jsonString, Class className)
     {
-        return (T) _gson.fromJson(jsonString, className);
+        return (T) _gson.fromJson(
+                jsonString,
+                className
+        );
     }
 
 }

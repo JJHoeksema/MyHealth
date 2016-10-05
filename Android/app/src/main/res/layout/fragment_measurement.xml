@@ -1,0 +1,14 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/measurement_table"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    tools:context="app.myhealth.fragments.MeasurementFragment">
+    <TableRow>
+        <TextView android:text="@string/measurement_list_header_datum"/>
+        <TextView android:text="@string/measurement_list_header_type"/>
+        <TextView android:text="@string/measurement_list_header_waarde"/>
+    </TableRow>
+
+</TableLayout>
