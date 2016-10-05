@@ -6,8 +6,11 @@ import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 
 /**
  * Created by Werk on 29-9-2016.
@@ -20,23 +23,31 @@ public class ApiConnection
     {
         String urlString = API_URL + params[0]; // URL to call
         String jsonString = params[1];
+        String data = "";
+        try
+        {
+            data = URLEncoder.encode("content", "UTF-8")
+                    + "=" + URLEncoder.encode(jsonString, "UTF-8");
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }
 
         BufferedReader in;
-        try {
+        try
+        {
 
             URL url = new URL( urlString );
 
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setDoOutput(Boolean.TRUE);
-
-            urlConnection.setDoOutput(true);// Should be part of code only for .Net web-services else no need for PHP
-            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
-            wr.writeBytes(jsonString);
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write( data );
             wr.flush();
-            wr.close();
 
             in = new BufferedReader(
-                    new InputStreamReader(urlConnection.getInputStream()));
+                    new InputStreamReader(conn.getInputStream()));
             String inputLine;
             StringBuffer response = new StringBuffer();
 
@@ -46,10 +57,8 @@ public class ApiConnection
             in.close();
 
             return response.toString();
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-
+        } catch (Exception e)
+        {
             return e.getMessage();
 
         }
@@ -57,7 +66,7 @@ public class ApiConnection
 //        return convertStreamToString(in);
     }
 
-    static String convertStreamToString(java.io.InputStream is) {
+    String convertStreamToString(java.io.InputStream is) {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
