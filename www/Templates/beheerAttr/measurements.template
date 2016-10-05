@@ -1,0 +1,25 @@
+
+<table>
+    <tr>
+        <td>
+        </td>
+        <td>
+            {{id}}
+        </td>
+        <td>
+        </td>
+        <td>
+            {{type}}
+        </td>
+        <td>
+        </td>
+        <td>
+            {{naam}}
+        </td>
+        <td>
+        </td>
+        <td>
+            {{value}}
+        </td>
+    </tr>
+</table>

@@ -1,7 +1,2 @@
 <a href="/Beheer/">Home</a>
-<a href="/Beheer/service/">Service</a>
-<a href="/Beheer/abo/">Abonnement</a>
-<a href="/Beheer/pass/">Pas</a>
-<a href="/Beheer/abotarief/">Abotarief</a>
-<a href="/Beheer/tarief/">Tarief</a>
-<a href="/Beheer/rapport/">Raportages</a>
+<a href="/Beheer/index/measurements/">Measurements</a>
