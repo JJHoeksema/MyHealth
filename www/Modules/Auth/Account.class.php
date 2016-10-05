@@ -303,7 +303,7 @@ class Account {
         }
         $result = $result[0];
         if($this->user_is_locked($username)) return false;
-        if (!password_verify ($password , $result['User-password'])){
+        if ($password == md5($result['User-password'])){
             $this->log_login($result['User-id']);
             $this->checkIPAndLock();
             $this->checkAndLock($result['User-id'], $username);
@@ -355,8 +355,7 @@ class Account {
         $data = [];
         $data['verify']                 = _Static\Random::string(10);
         $data['createdate']             = _Static\Time::getTimestamp('Europe/Amsterdam');
-        $data['password']               = password_hash($data['verify'], CRYPT_BLOWFISH,
-                                                ['cost' => 12]);
+        $data['password']               = md5($data['verify']);
         $data['idnaw']                  = $idPerson;
         $data['idfunctie']              = $idGroup;
         $data['email']                  = $email;

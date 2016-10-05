@@ -8,6 +8,7 @@
 	// register new module, with directory name test
 	$app->registerModule("Main");
 	$app->registerModule("Beheer");
+    $app->registerModule("Api");
 	// libs``````````````
 	$app->registerModule("Auth");
 	$app->registerModule("PDF");

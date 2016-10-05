@@ -1,0 +1,24 @@
+<?php
+    namespace Api;
+    require_once("autoload.php");
+
+    use DMF\App;
+    use DMF\Ext\Module;
+    use DMF\Page;
+    
+    class main extends Module{
+    
+        public function getName() {
+            return __NAMESPACE__;
+        }
+        
+        public function getMainRoute() {
+            return ["controller" => "index", "action" => "index"];
+        }
+        
+        public function isLibrary(){
+            return false;
+        }
+        
+    }
+?>
