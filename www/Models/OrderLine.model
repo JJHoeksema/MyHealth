@@ -1,0 +1,12 @@
+{
+"Database":"niekghs152_myhealth",
+"Table":"OrderLine",
+"References":[
+],
+"Columns":{
+"OrderId":"num",
+"Description": "text",
+"Code": "text",
+"Price": "num"
+}
+}
