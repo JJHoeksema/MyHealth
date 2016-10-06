@@ -1,5 +1,5 @@
 nav{
-    background-color:black;
+    background-color:#009a81;
     min-height:30px;
     color:#fff;
 }
@@ -7,7 +7,7 @@ nav{
 nav>a.profile{
     float:right;
     display: inline-block;
-    background-color:#222;
+    background-color:#55baab;
     margin:0;
     padding:5px 20px 5px 20px;
     text-align: right;
@@ -16,10 +16,10 @@ nav>a.profile{
 
 }
 nav>a.profile:hover {
-    color: #000;
+    color: #009a81;
     background-color:#fff;
-    border-left: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-left: 1px solid #55baab;
+    border-bottom: 1px solid #55baab;
     text-decoration: none;
 }
 
