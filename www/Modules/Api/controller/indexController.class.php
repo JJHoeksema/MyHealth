@@ -32,7 +32,8 @@
                     new Data\Specifier\WhereCheck("id", "==", $id)
                 ]);
                 $result = $this->db->delete($this->measurementsModel, $selector);
-                return print_r(json_encode($result));
+                $var['result']=true;
+                return print_r(json_encode($var));
             } else return $this->error();
         }
 

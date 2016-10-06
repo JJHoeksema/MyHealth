@@ -4,7 +4,8 @@
 "References":[
 ],
 "Columns":
-{"id":"num",
+{
+"id":"num",
 "type":"enum",
 "waarde":"text",
 "lockeind":"dateTime"

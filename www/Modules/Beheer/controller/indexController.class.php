@@ -61,9 +61,7 @@ class indexController extends BeheerPermission{
         $orderResult = $this->db->select($this->ordersModel, null, $orderSelect);
 
 
-        if (count($orderResult) == 0) {
-            $orders->add("content", new Page\Text("Er zijn geen facturen beschikbaar."));
-        } else {
+        if ($orderResult[0]["Order-Id"] != null) {
             $max = sizeof($orderResult);
             for ($i = 0; $i < $max; $i++ ) {
 
@@ -97,9 +95,11 @@ class indexController extends BeheerPermission{
                 $orderName->add("order_id", new Page\Text($row['OrderLine-OrderId']));
                 $orders->add("content" , $orderName);
             }
-
-            $this->template->add("content", $orders);
+        } else {
+            $orders->add("content", new Page\Text("Er zijn geen facturen beschikbaar."));
         }
+
+        $this->template->add("content", $orders);
     }
 
 }

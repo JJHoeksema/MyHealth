@@ -1,13 +1,14 @@
 {
 "Database":"niekghs152_myhealth",
 "Table":"Readings",
-"References":[
-],
-"Columns":{
+"References":[],
+"Columns":
+{
 "id":"num",
 "type": "num",
 "naam": "text",
 "value": "text",
-"user_id": "num"
+"user_id": "num",
+"date": "dateTime"
 }
 }
