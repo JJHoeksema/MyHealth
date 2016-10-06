@@ -36,17 +36,16 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        /*((TextView)view.findViewById(R.id.profile_naam)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_achternaam)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_land)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_plaats)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_straat)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_huisnr)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_toevoeging)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_telnr1)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_telnr2)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_email)).append(user.);
-        ((TextView)view.findViewById(R.id.profile_reknr)).append(user.);*/
+        ((TextView)view.findViewById(R.id.profile_naam)).append(user.getVoornaam());
+        ((TextView)view.findViewById(R.id.profile_achternaam)).append(user.getAchternaam());
+        ((TextView)view.findViewById(R.id.profile_land)).append(user.getLand());
+        ((TextView)view.findViewById(R.id.profile_plaats)).append(user.getPlaats());
+        ((TextView)view.findViewById(R.id.profile_straat)).append(user.getStraat());
+        ((TextView)view.findViewById(R.id.profile_huisnr)).append(user.getHuisnummer().toString());
+        ((TextView)view.findViewById(R.id.profile_toevoeging)).append(user.getToevoeging());
+        ((TextView)view.findViewById(R.id.profile_telnr1)).append(user.getTelefoonnummer());
+        ((TextView)view.findViewById(R.id.profile_email)).append(user.getEmail());
+        ((TextView)view.findViewById(R.id.profile_reknr)).append(user.getRekeningnummer());
 
         return view;
     }
