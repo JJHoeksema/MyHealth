@@ -1,0 +1,29 @@
+<table>
+    <h2>Factuur {{order_id}}</h2>
+    <tr
+        <td>
+            <b>Beschrijving:</b>
+        </td>
+        <td>
+            {{description}}
+        </td>
+        <td>
+            <b>Code:</b>
+        </td>
+        <td>
+            {{code}}
+        </td>
+        <td>
+            <b>Bedrag:</b>
+        </td>
+        <td>
+            {{price}}
+        </td>
+        <td>
+            <b>Betaald:</b>
+        </td>
+        <td>
+            {{status}}
+        </td>
+    </tr>
+</table>
