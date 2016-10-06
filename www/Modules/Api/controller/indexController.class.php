@@ -22,18 +22,16 @@
          */
         public function deleteMeasurements(){
             App::getInstance()->getPage()->clear();
-            $token= $this->input->arg(0);
-
-
-            if($this->verifyCode($token)) {
-                $id = $this->input->arg(1);
+            if($this->verifyCode($this->input->arg(0))) {
+                $this->construct();
 
                 $selector = new Data\Specifier\Where($this->measurementsModel, [
-                    new Data\Specifier\WhereCheck("id", "==", $id)
+                    new Data\Specifier\WhereCheck("id", "==", $this->input->arg(1))
                 ]);
-                $result = $this->db->delete($this->measurementsModel, $selector);
-                $var['result']=true;
-                return print_r(json_encode($var));
+                $this->db->delete($this->measurementsModel, $selector);
+
+                return print_r(json_encode($var['result']=true));
+
             } else return $this->error();
         }
 
@@ -44,16 +42,16 @@
          */
         public function measurements(){
             App::getInstance()->getPage()->clear();
-            $token= $this->input->arg(0);
-
-
-            if($this->verifyCode($token)) {
+            if($this->verifyCode($this->input->arg(0))) {
                 $id = $this->input->arg(1);
                 $this->construct();
+
+                //query
                 $selector = new Data\Specifier\Where($this->measurementsModel, [
                     new Data\Specifier\WhereCheck("user_id", "==", $id)
                 ]);
                 $data = $this->db->select($this->measurementsModel, null, $selector);
+
                 if($data[0]["Readings-id"]!=null){
                     return print_r(json_encode($data));
                 } else return $this->error();
@@ -69,27 +67,25 @@
          */
         public function login() {
             App::getInstance()->getPage()->clear();
-            $token= $this->input->arg(0);
 
-
-            if($this->verifyCode($token)) {
+            if($this->verifyCode($this->input->arg(0))) {
                 $this->construct();
                 $content = $this->loadContent();
 
-                $username = $content->Useremail;
-                $password = $content->Userpassword;
-
+                //query
                 $selectorUser = new Data\Specifier\Where($this->userModel, [
-                    new Data\Specifier\WhereCheck("email", "==", $username)
+                    new Data\Specifier\WhereCheck("email", "==", $content->Useremail)
                 ]);
-
                 $data = $this->db->select($this->userModel, null, $selectorUser);
+
                 if ($data[0]["User-password"] != null) {
-                    if ($data[0]["User-password"] == $password) {
+                    if ($data[0]["User-password"] == $content->Userpassword) {
                         $data[0]["User-password"] = null;
                     } else return $this->error();
+
                 } else return $this->error();
 
+                //query
                 $selectorNaw = new Data\Specifier\Where($this->nawModel, [
                     new Data\Specifier\WhereCheck("id", "==", $data[0]['User-idnaw'])
                 ]);
@@ -99,6 +95,7 @@
                     $dataNaw[0]["User-id"] = $data[0]["User-id"];
                     return print_r(json_encode($dataNaw[0]));
                 } else return $this->error();
+
             } else return $this->error();
         }
 
@@ -111,21 +108,18 @@
 
         //load the post content and strip of escapes
         private function loadContent(){
-            $content = $_POST['content'];
-            $content = str_replace("-","",$content);
+            $content = str_replace("-","",$_POST['content']);
             $content = str_replace("\\","",$content);
             return (json_decode($content));
         }
 
         //show false object
         private function error(){
-            $var['result']=false;
-            return print_r(json_encode($var));
-
+            return print_r(json_encode($var['result']=false));
         }
 
+        //redirect to home
         public function index(){
-            //redirect to home
             $this->request->redirect();
         }
 
@@ -136,9 +130,7 @@
          */
         private function verifyCode($token) {
             $config = new Db_config();
-            $secret = $config->getSecret();
-            $finalhash1 = md5($secret);
-            if($token==$finalhash1)return true;
+            if($token==md5($config->getSecret()))return true;
             return false;
         }
 
