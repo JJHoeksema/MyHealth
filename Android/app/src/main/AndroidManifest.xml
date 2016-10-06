@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".menu.NavigationDrawerActivity" />
+        <activity android:name=".menu.NavigationDrawerActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 
