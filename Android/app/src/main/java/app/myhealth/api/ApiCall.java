@@ -2,6 +2,8 @@ package app.myhealth.api;
 
 import java.util.concurrent.ExecutionException;
 
+import app.myhealth.util.EncryptionUtil;
+
 /**
  * Created by Werk on 27-9-2016.
  */
@@ -23,9 +25,9 @@ public class ApiCall
         return executeGet("measurements.php&id="+id);
     }
 
-    public static String getJsonMeasurements()
+    public static String getJsonMeasurements(int userId)
     {
-        return executeGet("measurements.php");
+        return executeGet("measurements/" + EncryptionUtil.getApiToken("") + "/" + userId);
     }
 
     private static String executePostWithResult(String call, String postData)

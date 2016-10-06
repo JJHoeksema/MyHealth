@@ -3,8 +3,6 @@ package app.myhealth.api;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import app.myhealth.ApiConnection;
-
 /**
  * Created by Werk on 27-9-2016.
  */

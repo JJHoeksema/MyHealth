@@ -30,8 +30,7 @@
     <string name="profile_straat">Straat</string>
     <string name="profile_huisnr">Huisnummer</string>
     <string name="profile_toevoeging">Toevoeging</string>
-    <string name="profile_telnr1">Telefoonnummer 1</string>
-    <string name="profile_telnr2">Telefoonnummer 2</string>
+    <string name="profile_telnr1">Telefoonnummer </string>
     <string name="profile_email">Email</string>
     <string name="profile_reknr">Rekeningnummer</string>
 

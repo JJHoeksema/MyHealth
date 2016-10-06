@@ -5,8 +5,8 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
-import app.myhealth.ApiConnection;
-import app.myhealth.LoginActivity;
+import app.myhealth.api.ApiConnection;
+import app.myhealth.api.Result;
 import app.myhealth.domain.Authenticate;
 import app.myhealth.domain.User;
 import app.myhealth.util.EncryptionUtil;
@@ -32,13 +32,23 @@ public class AsyncLogin extends AsyncTask<String, String, User>
 
         Log.d("result", result);
 
+        if( _gson.fromJson(result, Result.class).equals(Boolean.FALSE) )
+        {
+            return null;
+        }
+
         return _gson.fromJson(result, User.class);
     }
 
     @Override
     protected void onPostExecute(User user)
     {
-        _loginActivity.login(user);
+        if( user.getId() == null)
+        {
+            user = null;
+        }
+
+        _loginActivity.attemptLogin(user);
     }
 
     public void setLoginActivity(LoginActivity loginActivity)

@@ -1,16 +1,19 @@
-package app.myhealth;
+package app.myhealth.login;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import app.myhealth.Database;
+import app.myhealth.R;
 import app.myhealth.domain.Authenticate;
 import app.myhealth.domain.User;
 import app.myhealth.login.AsyncLogin;
@@ -56,20 +59,22 @@ public class LoginActivity extends AppCompatActivity {
 
     private void doLoginCall()
     {
+        Database.setUser(null);
+
         AsyncLogin login = new AsyncLogin();
         login.setLoginActivity(this);
         login.setAuthenticate( new Authenticate( mEmailView.getText().toString(), EncryptionUtil.getMD5(mPasswordView.getText().toString()) ));
         login.execute();
     }
 
-    public void login(User user)
+    private void login(User user)
     {
         Database.setUser(user);
         Intent intent = new Intent(this, NavigationDrawerActivity.class);
         startActivity(intent);
     }
 
-    private void attemptLogin(User user)
+    public void attemptLogin(User user)
     {
         if( user != null )
         {

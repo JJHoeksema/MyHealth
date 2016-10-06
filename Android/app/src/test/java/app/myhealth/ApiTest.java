@@ -4,11 +4,13 @@ import com.google.gson.Gson;
 
 import org.junit.Test;
 
+import app.myhealth.api.ApiConnection;
 import app.myhealth.domain.Authenticate;
 import app.myhealth.domain.User;
 import app.myhealth.util.EncryptionUtil;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by Werk on 28-9-2016.
@@ -44,7 +46,17 @@ public class ApiTest
         User user = _gson.fromJson(result, User.class);
 
         assertEquals(new Integer(79), user.getId());
-        assertEquals("achternaam", user.getAchternaam());
+        assertEquals("Hoeksema", user.getAchternaam());
+    }
+
+    @Test
+    public void testMeasurementList()
+    {
+        String result =
+                new ApiConnection().connectWithResponse(
+                        "measurements/"+EncryptionUtil.getApiToken("")+"/"+80, ""
+                );
+        assertNotEquals("{\"result\":false}",  result);
     }
 
     @Test

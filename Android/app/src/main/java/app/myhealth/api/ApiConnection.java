@@ -1,4 +1,6 @@
-package app.myhealth;
+package app.myhealth.api;
+
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,11 +20,12 @@ public class ApiConnection
     public String connectWithResponse(String... params)
     {
         String urlString = API_URL + params[0]; // URL to call
+        Log.d("urlstring", urlString);
         String jsonString = params[1];
         String data = "";
         try
         {
-            data = URLEncoder.encode("content", "UTF-8")
+            data = jsonString==null?"":URLEncoder.encode("content", "UTF-8")
                     + "=" + URLEncoder.encode(jsonString, "UTF-8");
         }
         catch (UnsupportedEncodingException e)

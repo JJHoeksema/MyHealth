@@ -34,7 +34,7 @@ public class User extends AbstractEntity
     @SerializedName("Naw-postcode")
     private String _postcode;
 
-    @SerializedName("Naw-telnummer")
+    @SerializedName("Naw-telnummer1")
     private String _telefoonnummer;
 
     @SerializedName("Naw-reknummer")

@@ -6,9 +6,9 @@
     android:stretchColumns="*"
     tools:context="app.myhealth.fragments.MeasurementFragment">
     <TableRow>
-        <TextView android:text="@string/measurement_list_header_datum"/>
-        <TextView android:text="@string/measurement_list_header_type"/>
-        <TextView android:text="@string/measurement_list_header_waarde"/>
+        <TextView android:text="@string/measurement_list_header_type" android:textStyle="bold"/>
+        <TextView android:text="@string/measurement_list_header_waarde" android:textStyle="bold"/>
+        <TextView android:text="@string/measurement_list_header_datum" android:textStyle="bold"/>
     </TableRow>
 
 </TableLayout>

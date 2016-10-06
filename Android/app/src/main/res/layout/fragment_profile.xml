@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_frame"
     android:layout_width="match_parent"
@@ -6,9 +6,10 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
+    android:stretchColumns="*"
     tools:context="app.myhealth.fragments.ProfileFragment">
 
-    <LinearLayout
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -22,8 +23,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_naam"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -37,8 +38,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_achternaam"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -52,8 +53,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_land"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -67,8 +68,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_plaats"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -82,8 +83,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_straat"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -97,8 +98,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_huisnr"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -112,8 +113,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_toevoeging"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -127,8 +128,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_telnr1"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -142,8 +143,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_email"/>
 
-    </LinearLayout>
-    <LinearLayout
+    </TableRow>
+    <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -157,6 +158,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_reknr"/>
 
-    </LinearLayout>
+    </TableRow>
 
-</LinearLayout>
+</TableLayout>
