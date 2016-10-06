@@ -22,7 +22,7 @@
     <div class="container">
 
       <?php
-        $fieldsValidate = false;
+        $fieldsValidate = true;
         if(isset($_POST['submitBill'])){
           if( $fieldsValidate ){
       ?>
@@ -48,7 +48,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="healthCare">Organisation:</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="healthCare" placeholder="Enter Health Care name">
+            <input type="text " class="form-control" id="healthCare" placeholder="Enter Health Care name">
           </div>
         </div>
 
