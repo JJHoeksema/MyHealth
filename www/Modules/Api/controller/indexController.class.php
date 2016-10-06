@@ -5,13 +5,36 @@
     use DMF\Data;
     use DMF\App;
     use DMF\Db_config;
+
     /*
      * Android API class
      */
+
     class indexController extends NoPermission{
         private $userModel;
         private $nawModel;
         private $measurementsModel;
+
+        /*
+         * API fucntion to delete a measurement
+         * @param host/api/index/measurements/token/id
+         * @return boolean
+         */
+        public function deleteMeasurements(){
+            App::getInstance()->getPage()->clear();
+            $token= $this->input->arg(0);
+
+
+            if($this->verifyCode($token)) {
+                $id = $this->input->arg(1);
+
+                $selector = new Data\Specifier\Where($this->measurementsModel, [
+                    new Data\Specifier\WhereCheck("id", "==", $id)
+                ]);
+                $result = $this->db->delete($this->measurementsModel, $selector);
+                return print_r(json_encode($result));
+            } else return $this->error();
+        }
 
         /*
          * API fucntion to get all the measurements
@@ -107,6 +130,8 @@
 
         /*
          * Function to check the static token for security reasons.
+         * @param token based on md5 hash of secret
+         * @return boolean
          */
         private function verifyCode($token) {
             $config = new Db_config();
