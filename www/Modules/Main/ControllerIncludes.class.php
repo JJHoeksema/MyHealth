@@ -1,15 +1,15 @@
 <?php
-namespace Main;
 
+namespace Main;
 use Auth\Account;
 use Auth\Permission;
 
-use BankAPI\Bank;
+
 
 use DMF\Ext\Controller;
 use DMF\Page;
 use DMF\Data;
-use Mailer\Mailer;
+use DMF\Db_config;
 
 class ControllerIncludes extends Controller{
 
@@ -30,18 +30,16 @@ class ControllerIncludes extends Controller{
 
     public function __construct(){
         parent::__construct();
-        $this->db = new Data\MySQLDatabase("localhost", "root", "root");
+        $config = new Db_config();
+        $this->db = new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
         $this->input = $this->app->getInputHandler();
         $this->request = $this->app->getRequestHandler();
-        $this->mailer = new Mailer("citypark", "no-reply@citypark.marwijnn.me");
 
         $this->template = new Page\Template('template');
 
         $this->user = new Account();
 
-        $this->bank = new Bank( "citypark.marwijnn.me:8080/cp-bank/BankService",
-            "MY-SUPER-SECRET-API-KEY",
-            "NL38CPBK0000100000");
+
 
         $this->template->add("data_url", new Page\Text(
             $this->app->getRequestHandler()->getProtocol() . "://" .

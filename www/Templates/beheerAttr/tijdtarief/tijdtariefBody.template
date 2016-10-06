@@ -1,9 +1,0 @@
-        <tr>
-            <td>{{id}}</td>
-            <td>{{categorie}}</td>
-            <td>{{dagbegin}}</td>
-            <td>{{dageind}}</td>
-            <td>{{tijdstart}}</td>
-            <td>{{tijdeind}}</td>
-            <td>{{begindatum}}</td>
-            <td>{{einddatum}}</td>

@@ -3,6 +3,8 @@
     require_once("autoload.php");
 
     use DMF\App;
+    use DMF\Data\FileModel;
+    use DMF\Data\MySQLDatabase;
     use DMF\Ext\Module;
     use DMF\Page;
     
@@ -42,7 +44,11 @@
                      $page->add( (new Page\Template("e404"))->add("data_url", new Page\Text($dataUrl)));
                      break;
                 case 500:
-                    $page->add( (new Page\Template("e500"))->add("data_url", new Page\Text($dataUrl)));
+                    $template = new Page\Template("e500");
+                    $template->add("data_url", new Page\Text($dataUrl));
+                    $template->add("stacktrace", new Page\Text($msg));
+                    $page->add($template);
+
                     break;
             }
            

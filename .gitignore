@@ -1,2 +1,4 @@
 #JetBrains stuff
 .idea/*
+db_config.php
+www/Bin/Db_config.class.php

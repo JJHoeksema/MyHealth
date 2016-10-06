@@ -1,3 +1,0 @@
-<a href="/main/abo/overzicht" class="button" style="float:right; ">Overzicht</a>
-<h1>Dit is het factuuroverzicht van abonnement {{id}}</h1>
-{{content}}

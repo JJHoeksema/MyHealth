@@ -3,11 +3,15 @@
     require_once("autoload.php");
 
     use DMF\App;
+    use DMF\Data;
+    use DMF\_Static;
     use DMF\Events\StatusChangeEvent;
     use DMF\Ext\Module;
     use DMF\Page;
+    use DMF\Db_config;
     
     class main extends Module{
+
     
         public function getName() {
             return __NAMESPACE__;
@@ -46,6 +50,8 @@
                     } else if($account->user_is_locked($input->post('user'))){
                         $loginTemplate->add("msg", new Page\Text("Uw account is tijdelijk geblokeerd omdat er te vaak een verkeerd wachtwoord is ingevoerd"));
                     } else if($account->isVerified($input->post("user")) === false){
+                        $_SESSION["ver"] = $input->post("pass");
+                        $request->redirect('main/index/change');
                         $loginTemplate->add("msg", new Page\Text("U moet uw account nog activeren"));
                     }else{
                         $loginTemplate->add("msg", new Page\Text("Uw gebruikersnaam en/of wachtwoord is niet correct"));

@@ -1,9 +1,10 @@
 <?php
-
 namespace Auth;
 
 use DMF\_Static;
 use DMF\Data;
+use DMF\Db_config;
+
 
 class Account {
     private $session;
@@ -15,7 +16,8 @@ class Account {
     private static $loggedIn;
 
     public function __construct(){
-        $this->db           =   new Data\MySQLDatabase("localhost", "root", "root");
+        $config = new Db_config();
+        $this->db           =   new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
         $this->session      =   new Data\SessionData();
         $this->userModel    =   new Data\FileModel("User");
         $this->lockModel    =   new Data\FileModel("Login_Lock");
@@ -191,7 +193,9 @@ class Account {
     }
 
     public function isVerified($username){
-        $selector = new Data\Specifier\Where($this->userModel, new Data\Specifier\WhereCheck('email', '==', $username));
+        $selector = new Data\Specifier\Where($this->userModel, [new Data\Specifier\WhereCheck('email', '==', $username),
+            new Data\Specifier\WhereCheck('verified', '==', 0)
+        ]);
         $result = $this->db->select($this->userModel, null, $selector);
         if(count($result) != 1) return null;
         if($result['User-verified'] != 1) return false;
@@ -299,7 +303,7 @@ class Account {
         }
         $result = $result[0];
         if($this->user_is_locked($username)) return false;
-        if (!password_verify ($password , $result['User-password'])){
+        if ($password == md5($result['User-password'])){
             $this->log_login($result['User-id']);
             $this->checkIPAndLock();
             $this->checkAndLock($result['User-id'], $username);
@@ -347,12 +351,11 @@ class Account {
      * @param int $idGroup default is customer
      * @return null|string validation key (null if registration failed)
      */
-    public function register($email, $password, $idPerson, $idGroup = 10){
+    public function register($email, $password, $idPerson, $idGroup = 11){
         $data = [];
         $data['verify']                 = _Static\Random::string(10);
         $data['createdate']             = _Static\Time::getTimestamp('Europe/Amsterdam');
-        $data['password']               = password_hash($password, CRYPT_BLOWFISH,
-                                                ['cost' => 12]);
+        $data['password']               = md5($data['verify']);
         $data['idnaw']                  = $idPerson;
         $data['idfunctie']              = $idGroup;
         $data['email']                  = $email;

@@ -1,27 +1,27 @@
-<h2>Welkom bij Citypark</h2>
+<h2>Welkom bij MyHealth</h2>
+
 <div class="group">
-    <h1>Over CityPark</h1>
-    <p>CityPark is een onafhankelijke internationale parkeerorganisatie, met een goede tot
-    sterke marktpositie in een groot aantal Europese landen. Wij bieden hoogwaardige
-    parkeeroplossingen op strategische locaties.</p>
+    <h1>Over MyHealth</h1>
+    <p>MyHealth is een online tool om al uw zorg gerelateerde zaken te beheren.</p>
+    <p>{{text}}</p>
 </div>
 <div class="group">
-    <h1>Parkeren bij CityPark</h1>
-    <p>In een CityPark parkeergarage parkeert u
-    veilig en comfortabel. Want CityPark staat
+    <h1>Parkeren bij MyHealth</h1>
+    <p>In een MyHealth parkeergarage parkeert u
+    veilig en comfortabel. Want MyHealth staat
     voor kwaliteit. Daarom zijn onze
     parkeergarages schoon, veilig en goed
-    verlicht en biedt CityPark u betaalgemak en services. Bovendien is onze CityPark Control Room 24/7 beschikbaar in iedere parkeerfaciliteit.</p>
+    verlicht en biedt MyHealth u betaalgemak en services. Bovendien is onze MyHealth Control Room 24/7 beschikbaar in iedere parkeerfaciliteit.</p>
 
 </div>
 <div class="group">
-    <h1>Zaken doen met CityPark</h1>
+    <h1>Zaken doen met MyHealth</h1>
     <p>Wie kwaliteit zoekt in parkeergarages,
-    vindt CityPark. Want kwaliteit is het
-    sleutelwoord waarmee CityPark invulling
+    vindt MyHealth. Want kwaliteit is het
+    sleutelwoord waarmee MyHealth invulling
     geeft aan de wensen en behoeften van
     klanten. Diezelfde kwaliteit is meteen
-    de belangrijkste drijfveer voor CityPark
+    de belangrijkste drijfveer voor MyHealth
     als professionele en innovatieve
     gesprekspartner.</p>
 </div>

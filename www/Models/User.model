@@ -1,0 +1,29 @@
+{
+   "Database":"niekghs152_myhealth",
+   "Table":"User",
+   "References":{
+      "fk_user_Naw1":{
+         "Column":"idnaw",
+         "ReferenceDatabase":"niekghs152_myhealth",
+         "ReferenceTable":"Naw",
+         "ReferenceColumn":"id"
+      },
+      "fk_user_Functie1":{
+         "Column":"idfunctie",
+         "ReferenceDatabase":"niekghs152_myhealth",
+         "ReferenceTable":"Functie",
+         "ReferenceColumn":"id"
+      }
+   },
+   "Columns":{
+      "id":"num",
+      "idnaw":"num",
+      "idfunctie":"num",
+      "email":"text",
+      "password":"text",
+      "verify":"text",
+      "lastlog":"dateTime",
+      "createdate":"dateTime",
+      "verified":"bool"
+   }
+}

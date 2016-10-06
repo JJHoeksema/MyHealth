@@ -6,9 +6,14 @@
     use Main\NoPermission;
     use DMF\Page;
     use DMF\Data;
+    use DMF\Db_config;
+
 
     class indexController extends NoPermission{
 
+        private $userModel;
+        protected $db;
+        private $email;
         public function test() {
             if(!$this->user->isLoggedIn()) return;
             $array = [];
@@ -18,7 +23,7 @@
             $welkom->add("name", new Page\Text($this->user->getFirstName()));
             $welkom->add("key", new Page\Text($this->user->getFirstName()));
             $mail->add("content", $welkom);
-            $mail->add("Title", new Page\Text("Welkom bij CityPark"));
+            $mail->add("Title", new Page\Text("Welkom bij MyHealth"));
             echo $mail->render();
         }
 
@@ -31,8 +36,7 @@
         }
 
         public function index(){
-            $this->setTitle("Home | CityPark");
-
+            $this->setTitle("Home | MyHealth");
             $welcome = new Page\Template("mainAttr/welcome");
             $this->template->add("content", $welcome);
         }
@@ -62,19 +66,14 @@
             if($this->input->post("email") != null && !$account->userExist($this->input->post("email"))) {
                 $result = $account->register($this->input->post("email"), $this->input->post("pass"), $id);
                 if ($result != null) {
+                    $this->userModel = new Data\FileModel("User");
+                    $selector = new Data\Specifier\Where($this->userModel, [
+                        new Data\Specifier\WhereCheck("email", "==", $this->input->post("email")),
+                    ]);
+                    $data = $this->db->select($this->userModel, null, $selector);
+                    $this->mailUser($data[0]);
 
-                    $mail = new Page\Template("Mail/main");
-                    $welkom = new Page\Template("Mail/welcome");
-                    $welkom->add("name", new Page\Text($this->input->post("naam")));
-                    $welkom->add("key", new Page\Text($result['key']));
-                    $welkom->add("date", new Page\Text($result['date']));
-                    $mail->add("content", $welkom);
-                    $mail->add("Title", new Page\Text("Welkom bij CityPark"));
-
-                    $this->mailer->setBody($mail->render());
-                    $this->mailer->subject("Welkom bij Citypark");
-                    $this->mailer->send($this->input->post("email"));
-                    $this->request->redirect('/main/index/register/success');
+                    $this->request->redirect('main/index/register/success');
                     return true;
                 }else{
                     $template->add("errors", new Page\Text("Er is iets misgegaan met het registreren<br/>", false));
@@ -83,6 +82,23 @@
                 $template->add("errors", new Page\Text("Er is al een gebruiker met dit email adres<br/>", false));
             }
             return false;
+        }
+
+        private function mailUser($data) {
+            $pw = $data["User-verify"];
+            $email = $data["User-email"];
+            $emailFrom = "support@myhealth.nl";
+
+            $text = "Beste Klant,<br><br>
+                     Er is een account voor u aangemaakt in onze MyHealth service. Om dit account te activeren kunt u met uw emailadres en het tijdelijke wachtwoord $pw inloggen op de volgende link:<br>
+                     <a href=\"http://myhealth.niekgigengack.nl/main/index/login\">MyHealth Inloggen</a><br><br>
+                     Met vriendelijke groet,<br><br>
+                     De MyHealth klantenservice.";
+
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html; charset=utf-8" . "\r\n";
+            $headers .= "From: <$emailFrom>" . "\r\n";
+            mail($email, "MyHealth Account Registratie", $text, $headers);
         }
 
         private function getRegisterTemplate(){
@@ -106,9 +122,12 @@
 
         public function register() {
             $nawModel = new Data\FileModel("Naw");
-            $this->setTitle("Aanmelden | CityPark");
+            $this->setTitle("Aanmelden | MyHealth");
+            $config = new Db_config();
+            $this->db           =   new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
 
             if($this->input->arg(0) == "success"){
+                // hier was eerst usermodel.. kan weg als werkt
                 $this->template->add("content", new Page\Template("mainAttr/register-success"));
                 return;
             }
@@ -140,10 +159,11 @@
                 "huisnummer"    => $this->input->post("huisnummer"),
                 "toevoeging"    => $this->input->post("toevoeging"),
             ];
+
             $result = $this->db->insert($nawModel, $data);
             $id = $result['Naw-id'];
-
             $template = $this->getRegisterTemplate();
+
             if($this->createUser($id, $template)){
                 $this->request->redirect('main/index/register/success');
                 return;
@@ -164,5 +184,28 @@
             $this->user->logOut();
             $this->request->redirect();
         }
+
+        public function change(){
+            $this->setTitle("Login | MyHealth");
+            $change = new Page\Template("mainAttr/register/changepw");
+            if($_POST["pass"]!=null){
+                if($_POST['pass']==$_POST["pass2"]){
+                    $config = new Db_config();
+                    $this->db           =   new Data\MySQLDatabase($config->getHost(), $config->getUsername(), $config->getPw());
+                    $this->userModel    =   new Data\FileModel("User");
+                    $selector = new Data\Specifier\Where($this->userModel, [
+                        new Data\Specifier\WhereCheck("verify", "==", $_SESSION['ver']),
+                    ]);
+                    $pass = md5($_POST['pass']);
+                    $this->db->update($this->userModel, ["verify" => null, "verified" => 1,"password" => $pass], $selector);
+                    $change->add("msg", new Page\Text("Het wachtwoord is gewijzigd."));
+                }
+                else{
+                    $change->add("msg", new Page\Text("De wachtwoorden komen niet overeen"));
+                }
+            }
+            $this->template->add("content", $change);
+        }
+
 
     }

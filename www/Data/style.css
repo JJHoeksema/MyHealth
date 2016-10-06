@@ -45,7 +45,7 @@ hr.clear {
 .group{
     display:inline-block;
     vertical-align:top;
-    border: 1px solid #AAA;
+    border: 1px solid #55baab;
     padding:20px;
     margin:5px;
     margin-top:10px;
@@ -59,7 +59,7 @@ hr.clear {
     margin: -35px 0 0 10px;
     font-size: 16px;
     font-weight:normal;
-    color:#AAA;
+    color:#009a81;
     background: #fff;
     padding:5px;
 }

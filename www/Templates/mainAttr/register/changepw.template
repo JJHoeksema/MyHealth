@@ -1,0 +1,8 @@
+<h3>Verander uw wachtwoord</h3>
+<p>{{msg}}</p>
+    <form method="post" action = "/main/index/change" >
+        <input required name="pass" type="password" placeholder="wachtwoord" />
+        <input required name="pass2" type="password" placeholder="Herhaal wachtwoord"/>
+
+        <button type="submit">verander</button>
+    </form>

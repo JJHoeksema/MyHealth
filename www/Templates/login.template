@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>Login | Citypark</title>
+    <title>Login | MyHealth</title>
     <link rel="icon" href="{{url}}/Data/favicon.ico"/>
     <link rel="stylesheet" href="{{url}}/Data/login.css"/>
     <link rel="stylesheet" href="{{url}}/Data/nav.css"/>
@@ -13,11 +13,12 @@
         <a class="profile" href="/main/index/register">Registreer</a>
     </nav>
 <main>
-    <h2>Citypark</h2>
+    <h2>MyHealth</h2>
     <p>&nbsp;{{msg}}&nbsp;</p>
     <form method="post">
         <input required name="user" type="email" placeholder="email" value="{{email}}" class="top"/>
         <input required name="pass" type="password" placeholder="wachtwoord"/>
+
         <button type="submit">login</button>
     </form>
 </main>
