@@ -1,14 +1,6 @@
 package app.myhealth.util;
 
-import android.icu.text.RelativeDateTimeFormatter;
-import android.provider.Settings;
-import android.util.Log;
-
 import org.mindrot.jbcrypt.BCrypt;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.TimeZone;
 
 /**
  * Created by Werk on 28-9-2016.

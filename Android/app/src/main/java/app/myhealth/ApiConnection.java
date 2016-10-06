@@ -1,13 +1,9 @@
 package app.myhealth;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -37,7 +33,6 @@ public class ApiConnection
         BufferedReader in;
         try
         {
-
             URL url = new URL( urlString );
 
             URLConnection conn = url.openConnection();
@@ -45,6 +40,7 @@ public class ApiConnection
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
             wr.write( data );
             wr.flush();
+            wr.close();
 
             in = new BufferedReader(
                     new InputStreamReader(conn.getInputStream()));
@@ -54,6 +50,7 @@ public class ApiConnection
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
+
             in.close();
 
             return response.toString();
@@ -62,13 +59,6 @@ public class ApiConnection
             return e.getMessage();
 
         }
-
-//        return convertStreamToString(in);
-    }
-
-    String convertStreamToString(java.io.InputStream is) {
-        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
     }
 
 }

@@ -2,14 +2,6 @@ package app.myhealth.api;
 
 import com.google.gson.Gson;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
 import app.myhealth.domain.Authenticate;
 import app.myhealth.domain.User;
 import app.myhealth.util.EncryptionUtil;

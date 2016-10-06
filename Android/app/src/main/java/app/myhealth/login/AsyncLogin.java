@@ -32,9 +32,7 @@ public class AsyncLogin extends AsyncTask<String, String, User>
 
         Log.d("result", result);
 
-        User user = _gson.fromJson(result, User.class);
-
-        return user;
+        return _gson.fromJson(result, User.class);
     }
 
     @Override

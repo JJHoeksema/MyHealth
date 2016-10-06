@@ -2,20 +2,15 @@ package app.myhealth;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
-import app.myhealth.api.ApiCommunicator;
 import app.myhealth.domain.Authenticate;
 import app.myhealth.domain.User;
 import app.myhealth.login.AsyncLogin;
@@ -69,37 +64,34 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(User user)
     {
+        Database.setUser(user);
+        Intent intent = new Intent(this, NavigationDrawerActivity.class);
+        startActivity(intent);
+    }
+
+    private void attemptLogin(User user)
+    {
         if( user != null )
         {
-            Database.setUser(user);
-            Intent intent = new Intent(this, NavigationDrawerActivity.class);
-            startActivity(intent);
+            login(user);
         }
         else
         {
             mLoginFeedback.setText("Ongeldige login gegevens.");
             mLoginFeedback.setTextColor(Color.rgb(200,0,0));
         }
-
     }
 
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
-    private void attemptLogin() {
-
-    }
-    private boolean isEmailValid(String email) {
+    private boolean isEmailValid(String email)
+    {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
-    private boolean isPasswordValid(String password) {
+    private boolean isPasswordValid(String password)
+    {
         //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
 }
-
