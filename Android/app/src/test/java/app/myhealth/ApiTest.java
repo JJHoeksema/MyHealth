@@ -27,7 +27,7 @@ public class ApiTest
     }
 
     @Test
-    public void passwordTest()
+    public void passwordHashTest()
     {
         assertEquals("2510c39011c5be704182423e3a695e91", EncryptionUtil.getMD5("h"));
     }
