@@ -70,6 +70,8 @@ class indexController extends BeheerPermission{
                 $orderLines = new Data\Specifier\Where($this->orderLinesModel, [
                     new Data\Specifier\WhereCheck("OrderId", "==", $orderResult[$i]["Order-Id"])
                 ]);
+                $orderName = new Page\Template("beheerAttr/orderName");
+
 
                 $sortedLines = new Data\Specifier\Sort($this->orderLinesModel, 'OrderId', false);
 
@@ -81,17 +83,21 @@ class indexController extends BeheerPermission{
                     $status = "Betaald";
                 }
 
+
                 foreach ($orderLinesResult AS $row) {
                     $orderLine = new Page\Template("/beheerAttr/orderLine");
-                    $orderLine->add("order_id", new Page\Text($row['OrderLine-OrderId']));
                     $orderLine->add("description", new Page\Text($row['OrderLine-Description']));
                     $orderLine->add("code", new Page\Text($row['OrderLine-Code']));
                     $orderLine->add("price", new Page\Text($row['OrderLine-Price']));
                     $orderLine->add("order_status", new Page\Text($row['Order-order_status']));
                     $orderLine->add("status", new Page\Text($status));
-                    $orders->add("content", $orderLine);
+                    $orderName->add("content", $orderLine);
                 }
+
+                $orderName->add("order_id", new Page\Text($row['OrderLine-OrderId']));
+                $orders->add("content" , $orderName);
             }
+
             $this->template->add("content", $orders);
         }
     }

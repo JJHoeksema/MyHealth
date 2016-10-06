@@ -1,6 +1,4 @@
-<table>
-    <h2>Factuur {{order_id}}</h2>
-    <tr
+    <tr>
         <td>
             <b>Beschrijving:</b>
         </td>
@@ -26,4 +24,3 @@
             {{status}}
         </td>
     </tr>
-</table>

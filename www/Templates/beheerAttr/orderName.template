@@ -1,0 +1,4 @@
+<table>
+    <h2>Factuur {{order_id}}</h2>
+    {{content}}
+</table>
